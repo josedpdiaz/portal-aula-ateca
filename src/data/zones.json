@@ -1,0 +1,99 @@
+[
+  {
+    "id": "zona-audiovisual",
+    "name": "Zona Multimedia, Croma y Colaboración",
+    "icon": "Video",
+    "badge": "Audiovisual & Streaming",
+    "tagline": "Creación de contenidos, oratoria profesional, retransmisiones y podcasting educativo.",
+    "equipmentList": [
+      "Set de Croma profesional verde con sistema de tensado",
+      "Focos de iluminación LED de estudio con temperatura de color regulable",
+      "Cámara PTZ motorizada orientable con mando a distancia y presets memorizados",
+      "Cámara digital Canon EOS R50 en trípode para grabaciones en alta definición",
+      "Micrófonos inalámbricos de solapa y micrófonos de condensador de sobremesa",
+      "Mesa de mezclas de audio USB multicanal y auriculares de monitorización",
+      "Estabilizador gimbal Zhiyun Crane M3 Combo para grabaciones en movimiento"
+    ],
+    "didacticUtility": "Permite al alumnado de Formación Profesional entrenar competencias comunicativas de alto nivel: video-pitch para rondas de inversores, atención a clientes y mediación en resolución de quejas, realización de podcast corporativo y simulaciones de ferias comerciales internacionales en falso directo.",
+    "examples": [
+      "Simulación de entrevistas de selección de personal y análisis de comunicación no verbal.",
+      "Grabación de video-pitch comercial con fondos dinámicos de salas ejecutivas o fábricas.",
+      "Showroom virtual de exportación de productos agroalimentarios canarios en streaming multilingüe.",
+      "Episodios de podcast corporativo sobre sostenibilidad y responsabilidad social empresarial."
+    ],
+    "guideId": "guia-audiovisual",
+    "audioGuideId": "guia-audio"
+  },
+  {
+    "id": "zona-3d",
+    "name": "Zona de Fabricación Digital 3D y Prototipado",
+    "icon": "Box",
+    "badge": "Prototipado Rápido",
+    "tagline": "Digitalización 3D, ecodiseño de envases y prototipado físico de merchandising empresarial.",
+    "equipmentList": [
+      "Impresora 3D Bambu Lab X1 Carbon Combo con sistema automático de material (AMS)",
+      "Escáner 3D Revopoint con mesa giratoria calibrada de 360°",
+      "Máquina cortadora y grabadora láser multifunción (módulos 10W)",
+      "Estación de soldadura de aire caliente y kits de robótica educativa Arduino/Raspberry Pi",
+      "Bobinas de filamento PLA ecológico, PETG y materiales biodegradables",
+      "Software de laminación Bambu Studio y herramientas CAD en los puestos del aula"
+    ],
+    "didacticUtility": "Conecta la gestión administrativa y comercial con el ciclo de vida del producto físico. El alumnado diseña, escanea y prototipa elementos reales, calculando costes de materias primas, tiempos de máquina y optimización del embalaje para logística y exportación.",
+    "examples": [
+      "Diseño y prototipado 3D de merchandising empresarial sostenible para empresas canarias.",
+      "Escaneado 3D de piezas y cálculo de volumetría para optimizar palés europeos en transporte aéreo.",
+      "Ecodiseño de packaging biodegradable para comercio electrónico interinsular e internacional.",
+      "Cálculo de costes de producción y memorias de amortización industrial de activos fijos."
+    ],
+    "guideId": "guia-impresora3d"
+  },
+  {
+    "id": "zona-vr",
+    "name": "Zona de Realidad Virtual (VR) e Inmersiva",
+    "icon": "Glasses",
+    "badge": "Entornos Inmersivos",
+    "tagline": "Entrenamiento inmersivo seguro de habilidades, prevención de riesgos y operativa logística.",
+    "equipmentList": [
+      "6 visores de realidad virtual Meta Quest (modelos Quest 3 y Quest 3S) con controladores Touch Plus",
+      "Cuenta institucional centralizada: atecaiesagustindebetancourt@gmail.com vinculada a Meta Horizon",
+      "Simuladores inmersivos de Prevención de Riesgos Laborales (PRL) y Primeros Auxilios (Bakata Solutions / XRescue)",
+      "Entornos virtuales de inspección marítimo-portuaria y manipulación de contenedores",
+      "Monitores de apoyo Asus TUF de 31.5\" para retransmisión de la vista del alumno al resto del aula",
+      "2 ordenadores PC de altas prestaciones (Intel Ultra 9, GPU 12GB RTX) para renderizado gráfico"
+    ],
+    "didacticUtility": "Facilita el entrenamiento en situaciones críticas donde el error en una empresa real conllevaría graves riesgos para la salud de las personas o costes económicos inasumibles. Los estudiantes practican en un entorno de riesgo cero.",
+    "examples": [
+      "Inspección pericial de la trinca y estiba de contenedores en buques mercantes (norma CTU/IMO).",
+      "Simulación de emergencias, protocolos de evacuación en oficinas y primeros auxilios con XRescue.",
+      "Resolución de dilemas éticos y mediación de conflictos laborales en escenarios 360°.",
+      "Recorridos virtuales por almacenes automatizados y operaciones de picking con realidad mixta."
+    ],
+    "guideId": "guia-vr"
+  },
+  {
+    "id": "zona-simulacion",
+    "name": "Zona de Simulación Administrativa 2D y Trabajo Colaborativo",
+    "icon": "LayoutDashboard",
+    "badge": "Simulación Empresarial",
+    "tagline": "Entrenamiento práctico en fiscalidad canaria (REF), seguridad social, aduanas y ERP.",
+    "equipmentList": [
+      "Pantalla interactiva táctil de 75 pulgadas ViewSonic ViewBoard 4K con pizarra colaborativa vBoard",
+      "2 monitores panorámicos de 31.5\" Asus TUF Full HD en puestos de control",
+      "11-12 puestos de trabajo informatizados con tomas dobles de red Cat6 certificada y enchufes Simón",
+      "Simulador Aduanero Canario (DUA de importación/exportación con tipos de AIEM e IGIC)",
+      "Simulador de la Seguridad Social (Sistema RED Directo: altas, bajas, RLC y RNT)",
+      "Simulador Tributario de la Agencia Tributaria Canaria (ATC) y de la AEAT (Modelos 420, 111, 190, 200)",
+      "Sistemas de gestión empresarial ERP (FacturaScripts, Factusol, Contasol, Nominasol)"
+    ],
+    "didacticUtility": "Constituye el núcleo del entrenamiento técnico de la familia de Administración y Gestión y Comercio Internacional. Permite simular el día a día de una oficina canaria real con todas las singularidades del Régimen Económico y Fiscal (REF).",
+    "examples": [
+      "Confección y validación del DUA canario calculando el arbitrio AIEM y las cuotas de IGIC.",
+      "Tramitación de contratos y liquidación de cotizaciones sociales en el Sistema RED.",
+      "Cálculo de la Reserva para Inversiones en Canarias (RIC) y cierre contable del ejercicio en ERP.",
+      "Construcción de cuadros de mando interactivos en Power BI sobre pantallas táctiles colaborativas."
+    ],
+    "guideId": "guia-simuladores",
+    "screenGuideId": "guia-pantalla",
+    "pcGuideId": "guia-puestos-pc"
+  }
+]

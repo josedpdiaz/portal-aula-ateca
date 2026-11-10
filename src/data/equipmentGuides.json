@@ -1,0 +1,543 @@
+[
+  {
+    "id": "guia-vr",
+    "title": "Gafas de realidad virtual Meta Quest 3 / 3S",
+    "category": "Realidad virtual",
+    "zone": "Zona de Realidad Virtual (VR)",
+    "zoneId": "zona-vr",
+    "equipmentModel": "6 visores Meta Quest 3 / 3S con mandos Touch Plus. Cuenta del centro: atecaiesagustindebetancourt@gmail.com",
+    "video": {
+      "url": "",
+      "maxMinutes": 5,
+      "status": "En preparación",
+      "description": "Vídeo de máximo 5 minutos con las claves prácticas del equipo. Se publicará en el canal de YouTube del Aula ATECA."
+    },
+    "quickStart5Min": {
+      "summary": "Lo mínimo para que un alumno entre en una aplicación con seguridad.",
+      "steps": [
+        "Comprueba que el visor está cargado y enciéndelo con el botón lateral (mantener pulsado).",
+        "Ajusta las correas y la distancia entre lentes hasta ver nítido.",
+        "Enciende los mandos y confirma el suelo y el límite de seguridad (Guardián).",
+        "Abre la aplicación de la sesión desde la Biblioteca.",
+        "Al terminar: botón Meta › salir de la aplicación y devolver el visor a carga."
+      ]
+    },
+    "requirementsBefore": [
+      "Visores cargados la víspera.",
+      "Espacio despejado alrededor de cada usuario.",
+      "Aplicaciones instaladas y actualizadas (a confirmar en el aula).",
+      "Toallitas para limpiar la espuma facial (nunca líquidos en las lentes)."
+    ],
+    "powerOnAndSetup": [
+      "Mantén pulsado el botón de encendido hasta ver el logotipo.",
+      "Con el visor puesto verás el aula en passthrough (cámaras).",
+      "Sigue el asistente para fijar el suelo y dibujar el límite Guardián.",
+      "Para proyectar lo que ve el alumno: menú › Compartir › Transmitir (al navegador o a un dispositivo compatible)."
+    ],
+    "basicUsage": [
+      "Botón Meta (mando derecho): menú principal. Mantener pulsado: recentrar la vista.",
+      "Gatillo índice: seleccionar. Gatillo lateral: agarrar.",
+      "Si sales del límite, el visor muestra el aula real automáticamente."
+    ],
+    "powerOffAndStorage": [
+      "Salir de la aplicación.",
+      "Mantener pulsado el botón de encendido › Apagar (o reposo si hay otra sesión).",
+      "Limpiar espuma y mandos y dejar a cargar.",
+      "No dejar los visores al sol: las lentes pueden dañarse con luz solar directa."
+    ],
+    "troubleshooting": [
+      {
+        "issue": "La imagen se ve borrosa",
+        "solution": "Ajusta la posición del visor en la cara y la distancia entre lentes; limpia las lentes con un paño de microfibra seco."
+      },
+      {
+        "issue": "Los mandos no responden",
+        "solution": "Pulsa el botón Meta para despertarlos; si no, revisa las pilas."
+      },
+      {
+        "issue": "La vista está desplazada",
+        "solution": "Mantén pulsado el botón Meta para recentrar."
+      },
+      {
+        "issue": "No aparece la aplicación",
+        "solution": "Busca en Biblioteca; si no está, avisa al responsable del aula."
+      }
+    ],
+    "externalLinks": [
+      {
+        "title": "Manuales VR del Aula ATECA (centro)",
+        "url": "https://ateca-forma-vr1.netlify.app/",
+        "isOfficial": true
+      },
+      {
+        "title": "Ayuda oficial Meta Quest",
+        "url": "https://www.meta.com/es-es/help/quest/",
+        "isOfficial": true
+      }
+    ],
+    "qrCodeId": "QR-ATECA-VR-01"
+  },
+  {
+    "id": "guia-impresora3d",
+    "title": "Impresora 3D Bambu Lab X1 Carbon Combo (AMS)",
+    "category": "Fabricación digital",
+    "zone": "Zona de Fabricación Digital 3D",
+    "zoneId": "zona-3d",
+    "equipmentModel": "Bambu Lab X1 Carbon Combo con AMS (4 bobinas). Software: Bambu Studio.",
+    "video": {
+      "url": "",
+      "maxMinutes": 5,
+      "status": "En preparación",
+      "description": "Vídeo de máximo 5 minutos con las claves prácticas del equipo. Se publicará en el canal de YouTube del Aula ATECA."
+    },
+    "quickStart5Min": {
+      "summary": "Imprimir una pieza ya preparada. Ojo: casi ninguna impresión dura menos de 55 minutos; lánzala con antelación.",
+      "steps": [
+        "Abre el modelo (STL/3MF) en Bambu Studio.",
+        "Elige impresora, placa y filamento (PLA para el aula).",
+        "Pulsa «Laminar» y revisa tiempo y gramos estimados.",
+        "Envía a la impresora y comprueba la primera capa.",
+        "Al terminar, deja enfriar la placa y retira la pieza flexionándola."
+      ]
+    },
+    "requirementsBefore": [
+      "Placa limpia (sin grasa de los dedos).",
+      "Filamento cargado en el AMS y bien identificado.",
+      "Impresora conectada a la red o tarjeta preparada (a confirmar en el aula)."
+    ],
+    "powerOnAndSetup": [
+      "Enciende la impresora con el interruptor trasero y espera a que termine el arranque.",
+      "En Bambu Studio, selecciona la impresora del aula (a confirmar en el aula).",
+      "La X1C realiza calibraciones automáticas antes de imprimir: es normal que tarde unos minutos."
+    ],
+    "basicUsage": [
+      "Pantalla táctil: estado, pausa y cancelación.",
+      "Cámara interna: permite vigilar la impresión desde Bambu Studio.",
+      "Para piezas multicolor, asigna cada color a una ranura del AMS al laminar."
+    ],
+    "powerOffAndStorage": [
+      "Espera a que la placa se enfríe.",
+      "Retira la pieza y limpia restos.",
+      "Apaga con el interruptor solo cuando no esté imprimiendo ni calentando."
+    ],
+    "troubleshooting": [
+      {
+        "issue": "La pieza se despega",
+        "solution": "Limpia la placa con agua y jabón o alcohol isopropílico y repite."
+      },
+      {
+        "issue": "El AMS no carga el filamento",
+        "solution": "Revisa que el extremo esté cortado en limpio e introducido hasta el tope."
+      },
+      {
+        "issue": "Hilos o acabado pobre",
+        "solution": "Seca el filamento si ha estado al aire mucho tiempo; usa el perfil de material correcto."
+      }
+    ],
+    "externalLinks": [
+      {
+        "title": "Wiki oficial Bambu Lab X1",
+        "url": "https://wiki.bambulab.com/en/x1",
+        "isOfficial": true
+      },
+      {
+        "title": "Descargar Bambu Studio",
+        "url": "https://bambulab.com/es/download/studio",
+        "isOfficial": true
+      },
+      {
+        "title": "Tinkercad (diseño 3D gratuito en el navegador)",
+        "url": "https://www.tinkercad.com/",
+        "isOfficial": true
+      }
+    ],
+    "qrCodeId": "QR-ATECA-3D-01"
+  },
+  {
+    "id": "guia-pantalla",
+    "title": "Pantalla interactiva ViewSonic ViewBoard 75\"",
+    "category": "Pantalla interactiva",
+    "zone": "Zona de Simulación Administrativa",
+    "zoneId": "zona-simulacion",
+    "equipmentModel": "ViewSonic ViewBoard 75\" 4K (modelo exacto a confirmar en el aula)",
+    "video": {
+      "url": "",
+      "maxMinutes": 5,
+      "status": "En preparación",
+      "description": "Vídeo de máximo 5 minutos con las claves prácticas del equipo. Se publicará en el canal de YouTube del Aula ATECA."
+    },
+    "quickStart5Min": {
+      "summary": "Proyectar tu portátil o usar la pizarra digital.",
+      "steps": [
+        "Enciende con el botón frontal o el mando.",
+        "Para escribir: abre la aplicación de pizarra de la pantalla.",
+        "Para tu ordenador: conecta el cable HDMI (y el USB táctil si quieres controlar el PC desde la pantalla).",
+        "Selecciona la entrada correcta en el menú de fuentes.",
+        "Al terminar, guarda o exporta la pizarra y apaga."
+      ]
+    },
+    "requirementsBefore": [
+      "Cable HDMI y USB disponibles (a confirmar en el aula).",
+      "Si vas a compartir sin cables, confirma la aplicación instalada (a confirmar en el aula)."
+    ],
+    "powerOnAndSetup": [
+      "Pulsa el botón de encendido.",
+      "Elige la fuente (PC integrado, HDMI…) desde el menú.",
+      "Si el táctil no responde sobre tu portátil, revisa el cable USB táctil."
+    ],
+    "basicUsage": [
+      "Un dedo: escribir. Palma: borrar (según configuración).",
+      "Exporta la pizarra a PDF o imagen antes de cerrar.",
+      "Usa la pantalla para trabajos en grupo y corrección en voz alta."
+    ],
+    "powerOffAndStorage": [
+      "Guarda el trabajo.",
+      "Apaga con el botón o el mando.",
+      "Limpia solo con paño seco de microfibra."
+    ],
+    "troubleshooting": [
+      {
+        "issue": "No hay imagen del portátil",
+        "solution": "Comprueba la fuente seleccionada y vuelve a conectar el HDMI."
+      },
+      {
+        "issue": "El táctil no controla el PC",
+        "solution": "Conecta el cable USB táctil al portátil."
+      },
+      {
+        "issue": "No se oye",
+        "solution": "Revisa la salida de audio del portátil (debe ser la pantalla)."
+      }
+    ],
+    "externalLinks": [
+      {
+        "title": "ViewSonic ViewBoard (soporte oficial)",
+        "url": "https://www.viewsonic.com/es/products/viewboard/",
+        "isOfficial": true
+      },
+      {
+        "title": "myViewBoard",
+        "url": "https://myviewboard.com/",
+        "isOfficial": true
+      }
+    ],
+    "qrCodeId": "QR-ATECA-SCR-01"
+  },
+  {
+    "id": "guia-audiovisual",
+    "title": "Croma, iluminación y cámaras (PTZ y Canon EOS R50)",
+    "category": "Producción audiovisual",
+    "zone": "Zona Multimedia y Croma",
+    "zoneId": "zona-audiovisual",
+    "equipmentModel": "Croma verde, iluminación LED, cámara PTZ con mando, Canon EOS R50 y estabilizador Zhiyun Crane M3.",
+    "video": {
+      "url": "",
+      "maxMinutes": 5,
+      "status": "En preparación",
+      "description": "Vídeo de máximo 5 minutos con las claves prácticas del equipo. Se publicará en el canal de YouTube del Aula ATECA."
+    },
+    "quickStart5Min": {
+      "summary": "Grabar un vídeo con fondo de croma en una sesión.",
+      "steps": [
+        "Despliega el croma sin arrugas y enciende las luces (fondo iluminado de forma uniforme).",
+        "Coloca a la persona a 1–2 m del fondo para evitar sombras y reflejos verdes.",
+        "Enciende la cámara (R50 o PTZ) y encuadra.",
+        "Conecta el micrófono y haz una prueba de 10 segundos.",
+        "Graba y revisa la toma antes de cambiar de grupo."
+      ]
+    },
+    "requirementsBefore": [
+      "Nadie vestido de verde.",
+      "Batería de la R50 cargada y tarjeta con espacio.",
+      "Software de captura o edición en el PC (a confirmar en el aula)."
+    ],
+    "powerOnAndSetup": [
+      "Canon EOS R50: interruptor ON, modo vídeo, enfoque automático en la cara.",
+      "Cámara PTZ: enciéndela y usa el mando para orientar y hacer zoom.",
+      "Para sustituir el fondo, aplica en el editor el filtro de clave de color (chroma key)."
+    ],
+    "basicUsage": [
+      "Mantén la luz frontal suave y el fondo iluminado aparte.",
+      "Graba en horizontal y deja aire por encima de la cabeza.",
+      "Graba planos cortos: es más fácil editar."
+    ],
+    "powerOffAndStorage": [
+      "Apaga la cámara antes de retirar la tarjeta.",
+      "Descarga los vídeos en la carpeta del grupo.",
+      "Apaga luces y recoge cables. Guarda baterías a cargar."
+    ],
+    "troubleshooting": [
+      {
+        "issue": "El fondo no se elimina bien",
+        "solution": "Ilumina el croma de forma más uniforme y aleja a la persona del fondo."
+      },
+      {
+        "issue": "La R50 deja de grabar",
+        "solution": "Revisa batería y espacio en tarjeta."
+      },
+      {
+        "issue": "Imagen oscura",
+        "solution": "Acerca las luces o sube su intensidad antes que tocar la cámara."
+      }
+    ],
+    "externalLinks": [
+      {
+        "title": "Manual oficial Canon EOS R50",
+        "url": "https://cam.start.canon/es/C011/",
+        "isOfficial": true
+      },
+      {
+        "title": "OBS Studio: guía de inicio",
+        "url": "https://obsproject.com/wiki/OBS-Studio-Quickstart",
+        "isOfficial": true
+      }
+    ],
+    "qrCodeId": "QR-ATECA-AV-01"
+  },
+  {
+    "id": "guia-audio",
+    "title": "Micrófonos y grabación de audio",
+    "category": "Audio",
+    "zone": "Zona Multimedia y Croma",
+    "zoneId": "zona-audiovisual",
+    "equipmentModel": "Micrófonos inalámbricos de solapa, micrófonos de mesa y mezclador USB (modelos a confirmar en el aula)",
+    "video": {
+      "url": "",
+      "maxMinutes": 5,
+      "status": "En preparación",
+      "description": "Vídeo de máximo 5 minutos con las claves prácticas del equipo. Se publicará en el canal de YouTube del Aula ATECA."
+    },
+    "quickStart5Min": {
+      "summary": "Grabar voz limpia para un vídeo o un podcast.",
+      "steps": [
+        "Carga o enciende emisor y receptor del micrófono de solapa.",
+        "Coloca el micrófono a un palmo de la boca, sin roces con la ropa.",
+        "Conecta el receptor o el mezclador al PC o a la cámara.",
+        "Haz una prueba: la señal no debe llegar al rojo.",
+        "Graba en un espacio sin ruido y escucha el resultado con auriculares."
+      ]
+    },
+    "requirementsBefore": [
+      "Baterías cargadas.",
+      "Auriculares para escuchar.",
+      "Audacity u otro programa instalado (a confirmar en el aula)."
+    ],
+    "powerOnAndSetup": [
+      "Enciende emisor y receptor y espera a que se emparejen.",
+      "En el PC, selecciona el dispositivo de entrada correcto.",
+      "Ajusta la ganancia hasta que la voz normal quede en zona media."
+    ],
+    "basicUsage": [
+      "Habla siempre a la misma distancia.",
+      "Silencia móviles y ventiladores cercanos.",
+      "Graba 5 segundos de silencio para poder limpiar ruido después."
+    ],
+    "powerOffAndStorage": [
+      "Detén la grabación y guarda el archivo.",
+      "Apaga emisores y pon a cargar.",
+      "Recoge cables sin doblarlos."
+    ],
+    "troubleshooting": [
+      {
+        "issue": "No entra sonido en el PC",
+        "solution": "Revisa el dispositivo de entrada seleccionado y que el micrófono no esté silenciado."
+      },
+      {
+        "issue": "Suena distorsionado",
+        "solution": "Baja la ganancia o aleja un poco el micrófono."
+      },
+      {
+        "issue": "Ruido de roce",
+        "solution": "Recoloca la solapa y fija el cable."
+      }
+    ],
+    "externalLinks": [
+      {
+        "title": "Manual de Audacity",
+        "url": "https://manual.audacityteam.org/",
+        "isOfficial": true
+      }
+    ],
+    "qrCodeId": "QR-ATECA-AUD-01"
+  },
+  {
+    "id": "guia-escaner-laser",
+    "title": "Escáner 3D Revopoint y grabadora láser",
+    "category": "Digitalización y corte",
+    "zone": "Zona de Fabricación Digital 3D",
+    "zoneId": "zona-3d",
+    "equipmentModel": "Escáner 3D Revopoint (software Revo Scan) y grabadora láser de 10 W (marca y modelo a confirmar en el aula)",
+    "video": {
+      "url": "",
+      "maxMinutes": 5,
+      "status": "En preparación",
+      "description": "Vídeo de máximo 5 minutos con las claves prácticas del equipo. Se publicará en el canal de YouTube del Aula ATECA."
+    },
+    "quickStart5Min": {
+      "summary": "Escanear un objeto sencillo. El láser solo con supervisión del docente.",
+      "steps": [
+        "Conecta el escáner al PC y abre Revo Scan.",
+        "Coloca el objeto en la mesa giratoria con buena luz y sin brillos.",
+        "Ajusta la distancia hasta que el indicador marque correcta.",
+        "Escanea dando la vuelta completa y revisa la nube de puntos.",
+        "Procesa (fusionar y mallar) y exporta en STL/OBJ."
+      ]
+    },
+    "requirementsBefore": [
+      "Objetos mates y de tamaño medio.",
+      "Láser: ventilación/extracción en marcha, gafas de protección y supervisión permanente."
+    ],
+    "powerOnAndSetup": [
+      "Escáner: conectar por USB y abrir Revo Scan.",
+      "Láser: encender extracción, cargar el diseño en el software del aula (a confirmar en el aula) y hacer una prueba en material de desecho."
+    ],
+    "basicUsage": [
+      "Escáner: mueve despacio y mantén la distancia constante.",
+      "Láser: nunca dejar la máquina trabajando sin vigilancia; usar solo materiales autorizados."
+    ],
+    "powerOffAndStorage": [
+      "Guarda el proyecto.",
+      "Desconecta el escáner.",
+      "Láser: apagar, dejar ventilar y limpiar restos."
+    ],
+    "troubleshooting": [
+      {
+        "issue": "El escáner pierde el seguimiento",
+        "solution": "Muévelo más despacio o añade textura/referencias alrededor."
+      },
+      {
+        "issue": "Superficies brillantes no se capturan",
+        "solution": "Usa objetos mates o un spray matificante autorizado."
+      }
+    ],
+    "externalLinks": [
+      {
+        "title": "Revopoint: software y descargas",
+        "url": "https://www.revopoint3d.com/pages/download",
+        "isOfficial": true
+      }
+    ],
+    "qrCodeId": "QR-ATECA-FAB-01"
+  },
+  {
+    "id": "guia-puestos-pc",
+    "title": "Ordenadores de altas prestaciones y puestos",
+    "category": "Informática",
+    "zone": "Zona de Simulación Administrativa",
+    "zoneId": "zona-simulacion",
+    "equipmentModel": "2 PC de altas prestaciones (Intel Core Ultra 9, GPU NVIDIA RTX de 12 GB, 32 GB RAM, 2 TB) con monitores Asus TUF 31,5\" y puestos del aula.",
+    "video": {
+      "url": "",
+      "maxMinutes": 5,
+      "status": "En preparación",
+      "description": "Vídeo de máximo 5 minutos con las claves prácticas del equipo. Se publicará en el canal de YouTube del Aula ATECA."
+    },
+    "quickStart5Min": {
+      "summary": "Empezar a trabajar en un puesto y guardar bien el trabajo.",
+      "steps": [
+        "Enciende el PC y los monitores.",
+        "Inicia sesión con el usuario del aula (a confirmar en el aula).",
+        "Abre el programa de la actividad (ofimática, ERP, editor…).",
+        "Guarda el trabajo en la carpeta indicada por el docente (a confirmar en el aula).",
+        "Cierra sesión al terminar."
+      ]
+    },
+    "requirementsBefore": [
+      "Programas necesarios instalados (a confirmar en el aula).",
+      "Usuarios y carpetas de trabajo definidos por el responsable del aula."
+    ],
+    "powerOnAndSetup": [
+      "Encender con el botón frontal.",
+      "Usar los PC de altas prestaciones para edición de vídeo, 3D y VR; los puestos para ofimática y ERP."
+    ],
+    "basicUsage": [
+      "No instalar programas sin autorización.",
+      "Copia de seguridad del trabajo en tu unidad personal o en la nube del centro."
+    ],
+    "powerOffAndStorage": [
+      "Guardar y cerrar programas.",
+      "Cerrar sesión o apagar desde el menú Inicio."
+    ],
+    "troubleshooting": [
+      {
+        "issue": "El programa no aparece",
+        "solution": "Avisa al responsable del aula; no instales nada por tu cuenta."
+      },
+      {
+        "issue": "El PC va lento al editar vídeo",
+        "solution": "Cierra otros programas y usa uno de los PC de altas prestaciones."
+      }
+    ],
+    "externalLinks": [
+      {
+        "title": "Drivers oficiales NVIDIA",
+        "url": "https://www.nvidia.com/es-es/drivers/",
+        "isOfficial": true
+      }
+    ],
+    "qrCodeId": "QR-ATECA-PC-01"
+  },
+  {
+    "id": "guia-simuladores",
+    "title": "Simuladores y software de gestión",
+    "category": "Simulación",
+    "zone": "Zona de Simulación Administrativa",
+    "zoneId": "zona-simulacion",
+    "equipmentModel": "Simuladores de Bakata (PRL, Dependencia, Primeros Auxilios/XRescue) y software de gestión: FacturaScripts, Factusol, Contasol, Nominasol.",
+    "video": {
+      "url": "",
+      "maxMinutes": 5,
+      "status": "En preparación",
+      "description": "Vídeo de máximo 5 minutos con las claves prácticas del equipo. Se publicará en el canal de YouTube del Aula ATECA."
+    },
+    "quickStart5Min": {
+      "summary": "Abrir el programa de gestión y la empresa de prácticas.",
+      "steps": [
+        "Abre el programa (FacturaScripts, Contasol, Nominasol o Factusol).",
+        "Selecciona la empresa de prácticas creada por el docente.",
+        "Comprueba ejercicio y fecha de trabajo.",
+        "Realiza la tarea indicada.",
+        "Exporta los documentos a PDF y cierra."
+      ]
+    },
+    "requirementsBefore": [
+      "Empresa de prácticas creada previamente.",
+      "Licencias/instalación revisadas (a confirmar en el aula)."
+    ],
+    "powerOnAndSetup": [
+      "Abrir el programa desde el escritorio.",
+      "Para los simuladores Bakata, ver la guía de gafas VR."
+    ],
+    "basicUsage": [
+      "Trabaja siempre en la empresa de prácticas, nunca con datos reales.",
+      "Exporta en PDF lo que vayas a entregar."
+    ],
+    "powerOffAndStorage": [
+      "Cerrar el programa correctamente para no dañar la base de datos."
+    ],
+    "troubleshooting": [
+      {
+        "issue": "No aparece la empresa de prácticas",
+        "solution": "Pide al docente que la restaure o la vuelva a crear."
+      }
+    ],
+    "externalLinks": [
+      {
+        "title": "FacturaScripts: documentación",
+        "url": "https://facturascripts.com/",
+        "isOfficial": true
+      },
+      {
+        "title": "Agencia Tributaria Canaria",
+        "url": "https://sede.gobiernodecanarias.org/tributos/",
+        "isOfficial": true
+      },
+      {
+        "title": "AEAT: Aduanas",
+        "url": "https://sede.agenciatributaria.gob.es/Sede/aduanas.html",
+        "isOfficial": true
+      }
+    ],
+    "qrCodeId": "QR-ATECA-SIM-01"
+  }
+]

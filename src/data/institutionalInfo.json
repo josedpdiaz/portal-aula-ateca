@@ -1,0 +1,71 @@
+{
+  "center": {
+    "name": "IES Agustín de Betancourt",
+    "code": "38003963",
+    "location": "Puerto de la Cruz, Santa Cruz de Tenerife, Canarias",
+    "classroom": "Aula 19 (Espacio ATECA)",
+    "family": "Administración y Gestión / Comercio y Marketing",
+    "managementEmail": "jpacdia@gobiernodecanarias.org",
+    "institutionalAccount": "atecaiesagustindebetancourt@gmail.com"
+  },
+  "legalFramework": {
+    "actuation": "Conversión de Aulas en Espacios de Tecnología Aplicada",
+    "actuationCode": "C20.I02.P02",
+    "program": "Plan de Modernización de la Formación Profesional — Programa de Cooperación Territorial (PCT Extraordinario 2024)",
+    "component": "Componente 20 «Plan Estratégico de Impulso de la Formación Profesional»",
+    "investment": "Inversión I.02 «Transformación Digital de la Formación Profesional»",
+    "framework": "Plan de Recuperación, Transformación y Resiliencia (PRTR) — NextGenerationEU",
+    "mandatoryText": "Las acciones desarrolladas en el centro relacionadas con la actuación «Conversión de aulas en espacios de tecnología aplicada» del «Plan de Modernización de la Formación Profesional», están financiadas por el Ministerio de Educación, Formación Profesional y Deportes y la Unión Europea-NextGenerationEU en el marco del Plan de Recuperación, Transformación y Resiliencia.",
+    "resolutionInfo": "Resolución de 29 de octubre de 2024 de la Secretaría General de Formación Profesional y Resoluciones Nº 306/2025 y Nº 422/2025 de la Dirección General de Formación Profesional y Enseñanzas de Régimen Especial del Gobierno de Canarias.",
+    "verificationCode": "0zsHq3g0fSAmeDJuXwE_CtQcVqJDNmMZF",
+    "verificationUrl": "https://sede.gobiernodecanarias.org/sede/verifica_doc?codigo_nde=0zsHq3g0fSAmeDJuXwE_CtQcVqJDNmMZF",
+    "dnshPrinciple": "Cumplimiento del principio de 'No causar perjuicio significativo al medioambiente' (DNSH - Do No Significant Harm)."
+  },
+  "budget": {
+    "totalAssigned": "55.000,00 €",
+    "breakdown": [
+      {
+        "concept": "Acondicionamiento físico del Aula 19",
+        "amount": "18.000,00 €",
+        "description": "Retirada de instalaciones antiguas, pintura plástica hidrófuga, suelo de PVC acústico antiestático de alto tránsito (Clase 34/43), carpintería Millennium 2000 e infraestructura de red Cat6 certificada con 11-12 tomas Simón."
+      },
+      {
+        "concept": "Equipamiento tecnológico específico",
+        "amount": "34.000,00 €",
+        "description": "6 visores Meta Quest 3/3S, impresora 3D Bambu Lab X1 Carbon Combo con AMS, pantalla interactiva ViewSonic 4K de 75\", 2 PC de altas prestaciones (Intel Ultra 9, GPU 12GB RTX), set de croma, cámaras PTZ y Canon EOS R50, micrófonos inalámbricos y simuladores."
+      },
+      {
+        "concept": "Plan de Formación del Profesorado",
+        "amount": "2.000,00 €",
+        "description": "12 horas de formación especializada para el claustro (Fase 1 online de software 3D y simuladores; Fase 2 presencial práctica en Aula 19 con visores VR y máquinas)."
+      },
+      {
+        "concept": "Acciones de Publicidad y Difusión",
+        "amount": "1.000,00 €",
+        "description": "Placa oficial de metacrilato A3, vinilos decorativos de gran formato, roll-ups publicitarios, cartelería institucional y vídeo de 2 minutos sobre la transformación del espacio."
+      }
+    ]
+  },
+  "externalSystems": {
+    "reservations": {
+      "name": "Sistema de Reservas Aula ATECA",
+      "url": "https://ateca.fpapps.es",
+      "status": "Activo y Operativo en Producción",
+      "auth": "Cuentas corporativas @gobiernodecanarias.org",
+      "notes": "No debe duplicarse ni sustituirse. Aforo recomendado de 10 puestos por sesión para garantizar la efectividad práctica."
+    },
+    "vrManuals": {
+      "name": "Manuales de Realidad Virtual",
+      "url": "https://ateca-forma-vr1.netlify.app/",
+      "notes": "Recurso de consulta para el manejo de los visores Meta Quest."
+    }
+  },
+  "images": {
+    "atecaLogo": "Logo.png",
+    "plaque": "PLACA.png",
+    "plaquePdf": "Placa_PDF.png",
+    "europeanUnion": "ES_Financiado_por_la_Unión_Europea_RGB_MONOCHROME.png",
+    "ministerio": "images.png",
+    "centerLogo": "logo-iesb.webp"
+  }
+}
