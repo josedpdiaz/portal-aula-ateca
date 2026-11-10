@@ -145,7 +145,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </p>
 
           <div className="text-[11px] text-slate-400 text-center md:text-right space-y-0.5">
-            <p className="font-semibold text-slate-300">Actualizado: 10 de noviembre de 2026</p>
+            <p className="font-semibold text-slate-300">Versión v1.2.0 · Actualizado: 10 de noviembre de 2026</p>
             <p className="text-slate-500">© {new Date().getFullYear()} IES Agustín de Betancourt.</p>
           </div>
 

@@ -1,17 +1,19 @@
 /**
- * CONFIGURACIÓN DE LA COMUNIDAD (Google Sheets + Google Forms + YouTube)
- * ---------------------------------------------------------------------
- * El portal es 100 % estático. Las aportaciones del profesorado se guardan en
- * una hoja de cálculo de Google a través de formularios de Google restringidos
- * al profesorado autorizado. El portal solo LEE las filas marcadas como
- * «Publicado» (moderación por la coordinación ATECA).
- *
- * Cómo rellenar (ver docs/COMUNIDAD.md):
- *  - *CsvUrl: Archivo › Compartir › Publicar en la web › pestaña › CSV.
- *  - *FormUrl: enlace «Enviar» del formulario de Google.
- * Si un valor está vacío, el portal muestra solo el contenido propio y un aviso.
+ * CONFIGURACIÓN DEL PORTAL Y DE LA COMUNIDAD DOCENTE
+ * --------------------------------------------------
+ * - APP_VERSION y LAST_UPDATED controlan el contador de versiones visible en la cabecera y el pie.
+ * - apiEndpoint apunta al conector PHP en el propio hosting (./community-api.php) para que el
+ *   profesorado autorizado pueda crear y editar actividades, experiencias y consejos en vivo.
+ * - googleSheetId y googleSheetUrl referencian la hoja de cálculo oficial de respaldo en Google Drive.
  */
+export const APP_VERSION = 'v1.2.0';
+export const LAST_UPDATED = '10 de noviembre de 2026';
+export const BOOKING_URL = 'https://ateca.fpapps.es';
+
 export const COMMUNITY = {
+  apiEndpoint: './community-api.php',
+  googleSheetId: '1A_C6Hbay0sMyb5pIbTUE3XgrAFFVpFHNuGLfXbWiL2k',
+  googleSheetUrl: 'https://docs.google.com/spreadsheets/d/1A_C6Hbay0sMyb5pIbTUE3XgrAFFVpFHNuGLfXbWiL2k/edit',
   casesCsvUrl: '',
   casesFormUrl: '',
   guideTipsCsvUrl: '',
@@ -20,6 +22,3 @@ export const COMMUNITY = {
   experiencesFormUrl: '',
   youtubeChannelUrl: '',
 };
-
-export const BOOKING_URL = 'https://ateca.fpapps.es';
-export const LAST_UPDATED = '10 de noviembre de 2026';

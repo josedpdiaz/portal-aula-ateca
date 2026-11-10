@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode';
-import { EquipmentGuide } from '../types';
+import { EquipmentGuide, GuideTip } from '../types';
 import { COMMUNITY } from '../config';
-import { useGuideTips, youtubeId } from '../lib/community';
+import { useGuideTips, saveCommunityItem, youtubeId } from '../lib/community';
 import { Modal } from './CatalogSection';
 import {
   PlayCircle, ListChecks, ClipboardCheck, Power, Hand, PowerOff, Wrench, ExternalLink,
-  QrCode, Printer, ChevronDown, Users, Plus, Youtube, Cpu,
+  QrCode, Printer, ChevronDown, Users, Plus, Youtube, Cpu, CheckCircle2, AlertCircle, Lock,
 } from 'lucide-react';
 
 interface QuickStartGuidesProps {
@@ -34,6 +34,14 @@ export const QuickStartGuides: React.FC<QuickStartGuidesProps> = ({ guides, sele
   const [qrOpen, setQrOpen] = useState(false);
   const [qrSvg, setQrSvg] = useState('');
   const [tipsInfo, setTipsInfo] = useState(false);
+  const [tipEmail, setTipEmail] = useState('');
+  const [tipPin, setTipPin] = useState('');
+  const [tipAuthor, setTipAuthor] = useState('');
+  const [tipText, setTipText] = useState('');
+  const [tipVideo, setTipVideo] = useState('');
+  const [tipErr, setTipErr] = useState('');
+  const [tipDone, setTipDone] = useState(false);
+  const [tipBusy, setTipBusy] = useState(false);
   const tips = useGuideTips();
 
   useEffect(() => { if (selectedGuideId) setActiveId(selectedGuideId); }, [selectedGuideId]);
@@ -52,8 +60,36 @@ export const QuickStartGuides: React.FC<QuickStartGuidesProps> = ({ guides, sele
   }, [qrOpen, g]);
 
   const addTip = () => {
-    if (COMMUNITY.guideTipsFormUrl) window.open(COMMUNITY.guideTipsFormUrl, '_blank', 'noopener');
-    else setTipsInfo(true);
+    setTipErr('');
+    setTipDone(false);
+    setTipsInfo(true);
+  };
+
+  const submitTip = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!tipText.trim() || !tipAuthor.trim()) {
+      setTipErr('Completa tu nombre/departamento y el consejo práctico.');
+      return;
+    }
+    setTipBusy(true);
+    setTipErr('');
+    const newTip: GuideTip & { id?: string } = {
+      id: `tip-${Date.now()}`,
+      guideId: g.id,
+      author: tipAuthor.trim(),
+      tip: tipText.trim(),
+      videoUrl: tipVideo.trim() || undefined,
+      date: new Date().toLocaleDateString('es-ES'),
+    };
+    const res = await saveCommunityItem('tips', tipEmail, tipPin, newTip);
+    setTipBusy(false);
+    if (!res.ok) {
+      setTipErr(res.error || 'No se pudo guardar.');
+      return;
+    }
+    setTipDone(true);
+    setTipText('');
+    setTipVideo('');
   };
 
   if (!g) return null;
@@ -216,13 +252,117 @@ export const QuickStartGuides: React.FC<QuickStartGuidesProps> = ({ guides, sele
       )}
 
       {tipsInfo && (
-        <Modal title="Añadir consejo o vídeo" onClose={() => setTipsInfo(false)}>
-          <div className="space-y-3 text-slate-700">
-            <p>El profesorado autorizado podrá añadir consejos prácticos y enlaces a vídeos (YouTube, máx. 5 min) mediante un formulario de Google conectado a la hoja de cálculo del portal.</p>
-            <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-sm">
-              El formulario aún no está conectado. Campos previstos: <strong>Equipo, Autor/a, Aportación, Enlace al vídeo (opcional)</strong>. Se publica tras la revisión de la coordinación ATECA.
+        <Modal title={`Añadir consejo o vídeo · ${g.title}`} onClose={() => setTipsInfo(false)}>
+          <form onSubmit={submitTip} className="space-y-4 text-sm text-slate-700">
+            <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 space-y-3">
+              <p className="text-xs font-bold text-amber-900 flex items-center gap-1.5">
+                <Lock className="w-4 h-4 text-amber-700" />
+                Acceso para profesorado autorizado (@gobiernodecanarias.org / @canariaseducacion.es)
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Correo docente *</label>
+                  <input
+                    type="email"
+                    required
+                    value={tipEmail}
+                    onChange={e => setTipEmail(e.target.value)}
+                    placeholder="docente@gobiernodecanarias.org"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Código docente *</label>
+                  <input
+                    type="password"
+                    required
+                    value={tipPin}
+                    onChange={e => setTipPin(e.target.value)}
+                    placeholder="Código del departamento"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-sm"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">Tu nombre o departamento *</label>
+              <input
+                type="text"
+                required
+                value={tipAuthor}
+                onChange={e => setTipAuthor(e.target.value)}
+                placeholder="Ej. Prof. Administración y Gestión"
+                className="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">Consejo práctico o truco de aula *</label>
+              <textarea
+                rows={3}
+                required
+                value={tipText}
+                onChange={e => setTipText(e.target.value)}
+                placeholder="Describe el consejo práctico para poner en marcha o aprovechar mejor este equipo..."
+                className="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-700 mb-1">Enlace a vídeo de YouTube (opcional, máx. 5 min)</label>
+              <input
+                type="url"
+                value={tipVideo}
+                onChange={e => setTipVideo(e.target.value)}
+                placeholder="https://www.youtube.com/watch?v=..."
+                className="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm"
+              />
+            </div>
+
+            {tipErr && (
+              <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                <span>{tipErr}</span>
+              </div>
+            )}
+
+            {tipDone && (
+              <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
+                <span>¡Aportación guardada y publicada en esta guía!</span>
+              </div>
+            )}
+
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-200">
+              {COMMUNITY.googleSheetUrl && (
+                <a
+                  href={COMMUNITY.googleSheetUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-semibold text-cyan-800 hover:underline inline-flex items-center gap-1"
+                >
+                  Ver hoja Google Sheets <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
+              <div className="flex gap-2 ml-auto">
+                <button
+                  type="button"
+                  onClick={() => setTipsInfo(false)}
+                  className="px-4 py-2 rounded-xl border border-slate-300 text-slate-700 font-semibold text-xs hover:bg-slate-50"
+                >
+                  Cerrar
+                </button>
+                <button
+                  type="submit"
+                  disabled={tipBusy}
+                  className="px-4 py-2 rounded-xl bg-cyan-700 hover:bg-cyan-800 text-white font-bold text-xs disabled:opacity-50"
+                >
+                  {tipBusy ? 'Guardando…' : 'Guardar aportación'}
+                </button>
+              </div>
+            </div>
+          </form>
         </Modal>
       )}
     </section>

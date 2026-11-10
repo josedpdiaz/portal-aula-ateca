@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, Menu, X, ExternalLink, Home, Layers, BookOpen, Wrench, Award, ShieldCheck } from 'lucide-react';
-import { BOOKING_URL, LAST_UPDATED } from '../config';
+import { BOOKING_URL, LAST_UPDATED, APP_VERSION } from '../config';
 
 interface NavbarProps {
   activeSection: string;
@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
                   IES Agustín de Betancourt
                 </span>
                 <span className="hidden xl:inline-block text-[10px] font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
-                  Actualizado: {LAST_UPDATED}
+                  {APP_VERSION} · Actualizado: {LAST_UPDATED}
                 </span>
               </div>
               <span className="block text-sm font-extrabold text-slate-900 leading-tight group-hover:text-cyan-700 transition-colors">
