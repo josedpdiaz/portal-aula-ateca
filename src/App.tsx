@@ -8,7 +8,7 @@ import { ExperiencesSection } from './components/ExperiencesSection';
 import { BookingSection } from './components/BookingSection';
 import { InstitutionalSection } from './components/InstitutionalSection';
 import { Footer } from './components/Footer';
-import { TeacherAuthModal } from './components/UiHelpers';
+import { TeacherAuthModal, GlobalImageViewerModal } from './components/UiHelpers';
 
 import activitiesData from './data/activities.json';
 import equipmentGuidesData from './data/equipmentGuides.json';
@@ -120,6 +120,9 @@ export const App: React.FC = () => {
 
       {/* Modal global de autenticación docente */}
       <TeacherAuthModal />
+
+      {/* Visor global a pantalla completa de imágenes (100% zoom) */}
+      <GlobalImageViewerModal />
 
       {/* Pie de página presente en todas las páginas */}
       <Footer

@@ -466,7 +466,7 @@ const ActivityDetail: React.FC<{
       </WindowBox>
 
       {vid && (
-        <div className="aspect-video rounded-xl overflow-hidden bg-black">
+        <div className="w-full aspect-video min-h-[220px] max-h-[80vh] rounded-xl overflow-hidden bg-black shadow-lg">
           <iframe
             className="w-full h-full"
             src={`https://www.youtube-nocookie.com/embed/${vid}`}

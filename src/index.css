@@ -95,3 +95,75 @@ html.dark textarea {
   outline: 2px solid #00a3e0;
   outline-offset: 2px;
 }
+
+/* ============================================================================
+   ESTILOS DE IMPRESIÓN OPTIMIZADOS (PANTALLA A PANTALLA Y AJUSTE LIMPIO)
+   ============================================================================ */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 10mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Ocultar elementos interactivos que no deben salir en papel */
+  header,
+  nav,
+  button,
+  .no-print,
+  [role="dialog"] button,
+  input,
+  select {
+    display: none !important;
+  }
+
+  /* Asegurar que las secciones principales y tarjetas se ajusten y no se corten */
+  main,
+  section,
+  article,
+  .print-page {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12mm !important;
+  }
+
+  /* Saltos de página limpios por sección cuando se imprime */
+  section {
+    page-break-after: auto;
+  }
+
+  /* Forzar contraste alto y evitar sombras pesadas */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .border,
+  [class*="border-"] {
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Las imágenes y placas se ajustan al ancho de página sin desbordar */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+  }
+
+  /* El pie institucional aparece ordenado al final */
+  footer {
+    display: block !important;
+    background: transparent !important;
+    color: #475569 !important;
+    border-top: 1px solid #cbd5e1 !important;
+    page-break-before: auto;
+    padding-top: 8mm !important;
+  }
+}
+

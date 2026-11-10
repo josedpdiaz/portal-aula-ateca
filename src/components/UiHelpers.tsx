@@ -80,9 +80,119 @@ export const StepGuideBanner: React.FC<{
   );
 };
 
+export const dispatchZoomImage = (src: string, alt?: string, title?: string) => {
+  window.dispatchEvent(new CustomEvent('ateca-zoom-image', { detail: { src, alt, title } }));
+};
+
 /**
- * Recuadro / Tarjeta con controles para Minimizar (—) y Maximizar (⤢)
+ * Imagen con soporte para doble clic (o botón) para ver a pantalla completa (100% viewport)
  */
+export const ZoomableImage: React.FC<{
+  src: string;
+  alt: string;
+  title?: string;
+  className?: string;
+  wrapperClassName?: string;
+}> = ({ src, alt, title, className = '', wrapperClassName = '' }) => {
+  return (
+    <div
+      className={`relative group cursor-zoom-in overflow-hidden ${wrapperClassName}`}
+      onDoubleClick={() => dispatchZoomImage(src, alt, title)}
+      title="Doble clic para maximizar imagen a pantalla completa (100%)"
+    >
+      <img src={src} alt={alt} className={className} loading="lazy" />
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          dispatchZoomImage(src, alt, title);
+        }}
+        title="Maximizar imagen a pantalla completa"
+        className="absolute bottom-2 right-2 p-1.5 rounded-lg bg-slate-900/80 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-slate-900 shadow-md inline-flex items-center gap-1 text-[11px] font-bold"
+      >
+        <Maximize2 className="w-3.5 h-3.5" />
+        <span className="hidden sm:inline">Ampliar</span>
+      </button>
+    </div>
+  );
+};
+
+/**
+ * Visor global a pantalla completa de imágenes (100% viewport con zoom)
+ */
+export const GlobalImageViewerModal: React.FC = () => {
+  const [data, setData] = useState<{ src: string; alt?: string; title?: string } | null>(null);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const custom = e as CustomEvent<{ src: string; alt?: string; title?: string }>;
+      if (custom.detail?.src) {
+        setData(custom.detail);
+      }
+    };
+    window.addEventListener('ateca-zoom-image', handler);
+    return () => window.removeEventListener('ateca-zoom-image', handler);
+  }, []);
+
+  useEffect(() => {
+    if (!data) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setData(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [data]);
+
+  if (!data) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6"
+      role="dialog"
+      aria-modal="true"
+      onClick={() => setData(null)}
+    >
+      {/* Barra superior con título y controles */}
+      <div className="flex items-center justify-between gap-3 text-white pb-3 border-b border-white/10 shrink-0" onClick={e => e.stopPropagation()}>
+        <div className="min-w-0">
+          <p className="text-xs font-bold text-cyan-400 uppercase tracking-wider">Vista a pantalla completa (100%)</p>
+          <p className="text-sm sm:text-base font-extrabold truncate">{data.title || data.alt || 'Imagen'}</p>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="text-xs text-slate-400 hidden sm:inline">Pulsa Esc o cualquier punto para cerrar</span>
+          <button
+            type="button"
+            onClick={() => setData(null)}
+            className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white"
+            title="Cerrar (Esc)"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Imagen maximizada ocupando todo el espacio disponible */}
+      <div className="flex-1 flex items-center justify-center p-2 sm:p-4 overflow-hidden" onClick={e => e.stopPropagation()}>
+        <img
+          src={data.src}
+          alt={data.alt || ''}
+          className="max-h-[82vh] max-w-[95vw] w-auto h-auto object-contain rounded-xl shadow-2xl bg-white p-2"
+        />
+      </div>
+
+      {/* Pie con opciones */}
+      <div className="text-center text-xs text-slate-400 shrink-0" onClick={e => e.stopPropagation()}>
+        <button
+          type="button"
+          onClick={() => window.print()}
+          className="px-4 py-1.5 rounded-xl bg-cyan-700 hover:bg-cyan-600 text-white font-bold text-xs inline-flex items-center gap-1.5"
+        >
+          Imprimir esta imagen
+        </button>
+      </div>
+    </div>
+  );
+};
 export const WindowBox: React.FC<{
   title: React.ReactNode;
   subtitle?: React.ReactNode;
@@ -102,49 +212,61 @@ export const WindowBox: React.FC<{
     }
   }, [forceMinimized]);
 
+  useEffect(() => {
+    if (!maximized) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMaximized(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [maximized]);
+
   return (
     <div
-      className={`rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 transition-all ${
+      className={`border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 transition-all ${
         maximized
-          ? 'fixed inset-3 sm:inset-6 z-50 overflow-y-auto shadow-2xl ring-2 ring-cyan-500 p-5 sm:p-7'
-          : `shadow-sm hover:shadow-md ${className}`
+          ? 'fixed inset-0 z-50 overflow-y-auto shadow-2xl p-4 sm:p-8 rounded-none flex flex-col justify-start bg-white dark:bg-slate-900'
+          : `rounded-2xl shadow-sm hover:shadow-md ${className}`
       }`}
     >
-      <div className={`flex items-start justify-between gap-2 ${maximized ? 'pb-4 border-b border-slate-200 dark:border-slate-700 mb-4' : 'p-4 pb-2'}`}>
+      <div className={`flex items-start justify-between gap-3 ${maximized ? 'pb-4 border-b border-slate-200 dark:border-slate-700 mb-4' : 'p-4 pb-2'}`}>
         <div className="min-w-0 flex-1">
           {badge && <div className="mb-1.5">{badge}</div>}
-          <div className="font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base leading-snug">
+          <div className={`font-bold text-slate-900 dark:text-slate-100 leading-snug ${maximized ? 'text-lg sm:text-2xl' : 'text-sm sm:text-base'}`}>
             {title}
           </div>
           {subtitle && (
-            <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <div className={`text-slate-500 dark:text-slate-400 mt-0.5 ${maximized ? 'text-sm sm:text-base' : 'text-xs'}`}>
               {subtitle}
             </div>
           )}
         </div>
-        <div className="flex items-center gap-1 shrink-0">
+        <div className="flex items-center gap-1.5 shrink-0">
           {actions}
-          <button
-            type="button"
-            onClick={() => setMinimized(m => !m)}
-            title={minimized ? 'Desplegar recuadro' : 'Minimizar recuadro'}
-            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
-          >
-            {minimized ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
-          </button>
+          {!maximized && (
+            <button
+              type="button"
+              onClick={() => setMinimized(m => !m)}
+              title={minimized ? 'Desplegar recuadro' : 'Minimizar recuadro'}
+              className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
+            >
+              {minimized ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
+            </button>
+          )}
           <button
             type="button"
             onClick={() => { setMinimized(false); setMaximized(x => !x); }}
-            title={maximized ? 'Restaurar tamaño' : 'Maximizar a pantalla completa'}
-            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
+            title={maximized ? 'Restaurar tamaño (Esc)' : 'Maximizar a pantalla completa (100%)'}
+            className="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-600 inline-flex items-center gap-1 text-xs font-bold"
           >
-            {maximized ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+            {maximized ? <Minimize2 className="w-4 h-4 text-cyan-600" /> : <Maximize2 className="w-4 h-4" />}
+            <span>{maximized ? 'Salir de pantalla completa' : 'Maximizar'}</span>
           </button>
         </div>
       </div>
 
       {!minimized && (
-        <div className={maximized ? '' : 'px-4 pb-4 pt-1'}>
+        <div className={maximized ? 'flex-1 flex flex-col justify-start w-full' : 'px-4 pb-4 pt-1'}>
           {children}
         </div>
       )}
@@ -417,7 +539,7 @@ export const TeacherAuthModal: React.FC = () => {
             Paso 3 · Clave de acceso docente <span className="text-red-600">*</span>
           </label>
           <p className="text-[11px] text-slate-500 dark:text-slate-400 mb-2">
-            Clave del claustro para el Aula ATECA (código actual: <strong>ATECA2026</strong>).
+            Introduce la clave facilitada por la coordinación del Aula ATECA al claustro.
           </p>
           <div className="relative">
             <input

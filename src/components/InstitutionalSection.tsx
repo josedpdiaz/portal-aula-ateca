@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { ShieldCheck, Minimize2, Maximize2 } from 'lucide-react';
-import { WindowBox } from './UiHelpers';
+import { WindowBox, ZoomableImage } from './UiHelpers';
 
 export const InstitutionalSection: React.FC = () => {
   const [selectedPlaqueVersion, setSelectedPlaqueVersion] = useState<'fisica' | 'regional'>('regional');
   const [allMinimized, setAllMinimized] = useState(false);
+
+  const plaqueSrc = selectedPlaqueVersion === 'regional' ? './Placa_PDF.png' : './PLACA.png';
+  const plaqueTitle = selectedPlaqueVersion === 'regional'
+    ? 'Placa Oficial Aula ATECA (Versión Consejería de Educación - Gobierno de Canarias)'
+    : 'Placa Conmemorativa Aula ATECA (Versión Física Puerta Aula 19)';
 
   return (
     <section id="institucional" className="py-4 sm:py-6 scroll-mt-20">
@@ -61,32 +66,38 @@ export const InstitutionalSection: React.FC = () => {
           <WindowBox
             forceMinimized={allMinimized}
             title="Emblemas Oficiales Reglamentarios"
-            subtitle="Sin alteraciones conforme al Manual de Marca PRTR"
+            subtitle="Doble clic sobre cualquier emblema para ampliar a pantalla completa (100%)"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center justify-items-center pt-1">
-              <div className="p-3 rounded-xl bg-white border border-slate-200 w-full flex flex-col items-center justify-center space-y-1.5 h-28">
-                <img
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center justify-items-center pt-1 w-full">
+              <div className="p-3 rounded-xl bg-white border border-slate-200 w-full flex flex-col items-center justify-center space-y-1.5 h-36">
+                <ZoomableImage
                   src="./images.png"
                   alt="Ministerio de Educación, Formación Profesional y Deportes"
-                  className="max-h-14 max-w-full object-contain"
+                  title="Emblema Oficial: Ministerio de Educación, Formación Profesional y Deportes"
+                  className="max-h-20 max-w-full object-contain"
+                  wrapperClassName="flex items-center justify-center"
                 />
                 <span className="text-[10px] text-slate-600 font-semibold uppercase text-center">MEFPD</span>
               </div>
 
-              <div className="p-3 rounded-xl bg-white border border-slate-200 w-full flex flex-col items-center justify-center space-y-1.5 h-28">
-                <img
+              <div className="p-3 rounded-xl bg-white border border-slate-200 w-full flex flex-col items-center justify-center space-y-1.5 h-36">
+                <ZoomableImage
                   src="./ES_Financiado_por_la_Unión_Europea_RGB_MONOCHROME.png"
                   alt="Financiado por la Unión Europea - NextGenerationEU"
-                  className="max-h-12 max-w-full object-contain"
+                  title="Emblema Oficial: Financiado por la Unión Europea - NextGenerationEU"
+                  className="max-h-16 max-w-full object-contain"
+                  wrapperClassName="flex items-center justify-center"
                 />
                 <span className="text-[10px] text-slate-600 font-semibold uppercase text-center">NextGenerationEU</span>
               </div>
 
-              <div className="p-3 rounded-xl bg-white border border-slate-200 w-full flex flex-col items-center justify-center space-y-1.5 h-28">
-                <img
+              <div className="p-3 rounded-xl bg-white border border-slate-200 w-full flex flex-col items-center justify-center space-y-1.5 h-36">
+                <ZoomableImage
                   src="./Logo.png"
                   alt="ATECA Aulas de Tecnología Aplicada"
-                  className="max-h-12 max-w-full object-contain"
+                  title="Emblema Oficial: Aulas de Tecnología Aplicada (ATECA)"
+                  className="max-h-16 max-w-full object-contain"
+                  wrapperClassName="flex items-center justify-center"
                 />
                 <span className="text-[10px] text-slate-600 font-semibold uppercase text-center">Aula ATECA</span>
               </div>
@@ -96,6 +107,7 @@ export const InstitutionalSection: React.FC = () => {
           <WindowBox
             forceMinimized={allMinimized}
             title="Placa Oficial del Espacio (Aula 19)"
+            subtitle="Doble clic sobre la placa para ver en grande al 100%"
             actions={
               <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-700 p-0.5 rounded-lg text-[11px] font-bold">
                 <button
@@ -115,11 +127,13 @@ export const InstitutionalSection: React.FC = () => {
               </div>
             }
           >
-            <div className="bg-white p-3 rounded-xl border border-slate-200 flex items-center justify-center">
-              <img
-                src={selectedPlaqueVersion === 'regional' ? './Placa_PDF.png' : './PLACA.png'}
-                alt="Placa conmemorativa Aula ATECA"
-                className="max-h-48 w-auto object-contain rounded"
+            <div className="bg-white p-3 rounded-xl border border-slate-200 flex items-center justify-center w-full min-h-[220px]">
+              <ZoomableImage
+                src={plaqueSrc}
+                alt={plaqueTitle}
+                title={plaqueTitle}
+                className="max-h-64 sm:max-h-80 w-auto object-contain rounded"
+                wrapperClassName="flex items-center justify-center w-full"
               />
             </div>
           </WindowBox>

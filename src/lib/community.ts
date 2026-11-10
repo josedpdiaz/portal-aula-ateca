@@ -143,7 +143,7 @@ export function loginTeacher(
   if (cleanPin.toUpperCase() !== 'ATECA2026') {
     return {
       ok: false,
-      error: 'Clave docente incorrecta. Solicítala a la coordinación del Aula ATECA (por defecto: ATECA2026).',
+      error: 'Clave docente incorrecta. Solicítala a la coordinación del Aula ATECA.',
     };
   }
 
