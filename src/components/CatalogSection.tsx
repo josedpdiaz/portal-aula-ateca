@@ -125,25 +125,24 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
   };
 
   return (
-    <section id="actividades" className="py-14 sm:py-16 bg-slate-50 border-b border-slate-200 scroll-mt-20">
+    <section id="actividades" className="py-8 sm:py-10 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Cabecera */}
-        <header className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-8">
+        <header className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
           <div className="max-w-2xl">
-            <p className="text-sm font-bold text-cyan-800 uppercase tracking-wide">Banco de casos de uso</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Actividades didácticas</h2>
-            <p className="text-base sm:text-lg text-slate-700 mt-3 leading-relaxed">
-              Propuestas para sesiones de 55 minutos en <strong>Administración y Finanzas</strong> (1.º y 2.º)
+            <p className="text-xs font-bold text-cyan-800 uppercase tracking-wide">Banco de casos de uso · Sesiones de 55 min</p>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-0.5">Actividades didácticas para FP</h1>
+            <p className="text-sm sm:text-base text-slate-600 mt-1.5 leading-relaxed">
+              Propuestas para <strong>Administración y Finanzas</strong> (1.º y 2.º)
               y <strong>Comercio Internacional</strong> (1.º), organizadas por las siglas oficiales de cada módulo.
-              Son <strong>propuestas</strong>: las sesiones realizadas se recogen en «Experiencias».
             </p>
           </div>
           <button
             onClick={contribute}
-            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold shadow-sm self-start lg:self-auto"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-sm font-extrabold shadow-2xs self-start lg:self-auto cursor-pointer"
           >
-            <Plus className="w-5 h-5" /> Aportar un caso de uso
+            <Plus className="w-4 h-4" /> Aportar un caso de uso
           </button>
         </header>
 

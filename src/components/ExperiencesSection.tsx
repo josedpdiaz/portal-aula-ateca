@@ -27,19 +27,19 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({ experien
   };
 
   return (
-    <section id="experiencias" className="py-14 sm:py-16 bg-slate-50 border-b border-slate-200 scroll-mt-20">
+    <section id="experiencias" className="py-8 sm:py-10 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-8">
+        <header className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
           <div className="max-w-2xl">
-            <p className="text-sm font-bold text-cyan-800 uppercase tracking-wide">Experiencias y buenas prácticas</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Lo que ya se ha hecho en el aula</h2>
-            <p className="text-base sm:text-lg text-slate-700 mt-3 leading-relaxed">
+            <p className="text-xs font-bold text-cyan-800 uppercase tracking-wide">Experiencias y buenas prácticas</p>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-0.5">Lo que ya se ha hecho en el aula</h1>
+            <p className="text-sm sm:text-base text-slate-600 mt-1.5 leading-relaxed">
               Aquí solo aparecen sesiones <strong>realizadas y documentadas</strong> por el profesorado del centro.
-              Las ideas y propuestas están en «Actividades».
+              Las ideas y propuestas están en «Actividades FP».
             </p>
           </div>
-          <button onClick={add} className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 font-bold self-start lg:self-auto">
-            <Plus className="w-5 h-5" /> Documentar una experiencia
+          <button onClick={add} className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-sm font-extrabold self-start lg:self-auto cursor-pointer">
+            <Plus className="w-4 h-4" /> Documentar una experiencia
           </button>
         </header>
 

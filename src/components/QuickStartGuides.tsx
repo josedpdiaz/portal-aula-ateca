@@ -59,15 +59,14 @@ export const QuickStartGuides: React.FC<QuickStartGuidesProps> = ({ guides, sele
   if (!g) return null;
 
   return (
-    <section id="guias" className="py-14 sm:py-16 bg-white border-b border-slate-200 scroll-mt-20">
+    <section id="guias" className="py-8 sm:py-10 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <header className="max-w-2xl mb-8">
-          <p className="text-sm font-bold text-cyan-800 uppercase tracking-wide">Puesta en marcha rápida</p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Recetas para empezar con cada equipo</h2>
-          <p className="text-base sm:text-lg text-slate-700 mt-3 leading-relaxed">
-            Primero un <strong>vídeo corto (máx. 5 min)</strong> con las claves prácticas; después la <strong>receta en 5 pasos</strong>.
-            Debajo tienes el detalle y las aportaciones del profesorado.
+        <header className="max-w-2xl mb-6">
+          <p className="text-xs font-bold text-cyan-800 uppercase tracking-wide">Puesta en marcha rápida · QR por equipo</p>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-0.5">Recetas para empezar con cada equipo</h1>
+          <p className="text-sm sm:text-base text-slate-600 mt-1.5 leading-relaxed">
+            Primero un <strong>vídeo corto (máx. 5 min)</strong> con las claves prácticas; después la <strong>receta en 5 pasos</strong>, el detalle plegable y las aportaciones del profesorado.
           </p>
         </header>
 

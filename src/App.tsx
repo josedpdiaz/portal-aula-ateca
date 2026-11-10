@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ZoneCards } from './components/ZoneCards';
@@ -15,102 +15,111 @@ import zonesData from './data/zones.json';
 import experiencesData from './data/experiences.json';
 import { Activity, EquipmentGuide, Zone, Experience } from './types';
 
+const VALID_PAGES = new Set(['inicio', 'actividades', 'guias', 'zonas', 'experiencias', 'institucional']);
+
 export const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('inicio');
   const [selectedGuideId, setSelectedGuideId] = useState<string>('');
   const [selectedZoneFilter, setSelectedZoneFilter] = useState<string>('ALL');
 
-  // Enlaces directos desde los QR de los equipos: …/#guia-vr
-  React.useEffect(() => {
-    const openFromHash = () => {
+  const navigateTo = (pageId: string) => {
+    const target = VALID_PAGES.has(pageId) ? pageId : 'inicio';
+    setActiveSection(target);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Enlaces directos desde QR (#guia-vr, #guia-impresora3d...) o desde secciones (#actividades, #zonas...)
+  useEffect(() => {
+    const syncFromHash = () => {
       const id = decodeURIComponent(window.location.hash.slice(1));
+      if (!id) return;
       if (id.startsWith('guia-') && (equipmentGuidesData as EquipmentGuide[]).some(g => g.id === id)) {
         setSelectedGuideId(id);
-        setTimeout(() => document.getElementById('guias')?.scrollIntoView({ block: 'start' }), 50);
+        setActiveSection('guias');
+        window.scrollTo({ top: 0 });
+      } else if (VALID_PAGES.has(id)) {
+        setActiveSection(id);
+        window.scrollTo({ top: 0 });
       }
     };
-    openFromHash();
-    window.addEventListener('hashchange', openFromHash);
-    return () => window.removeEventListener('hashchange', openFromHash);
+    syncFromHash();
+    window.addEventListener('hashchange', syncFromHash);
+    return () => window.removeEventListener('hashchange', syncFromHash);
   }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   const handleSelectGuideFromOther = (guideId: string) => {
     setSelectedGuideId(guideId);
-    scrollToSection('guias');
+    setActiveSection('guias');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleFilterByZone = (zoneName: string) => {
-    setSelectedZoneFilter(zoneName);
-    scrollToSection('actividades');
+  const handleFilterByZone = (zoneId: string) => {
+    setSelectedZoneFilter(zoneId);
+    setActiveSection('actividades');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-cyan-100 selection:text-cyan-900">
+    <div className="min-h-screen flex flex-col bg-slate-100/70 text-slate-900 selection:bg-cyan-100 selection:text-cyan-900">
       
-      {/* Navbar with quick links & booking CTA */}
+      {/* Barra superior compacta con pestañas de páginas */}
       <Navbar
         activeSection={activeSection}
-        onNavigate={scrollToSection}
+        onNavigate={navigateTo}
       />
 
-      {/* Main Content Area */}
+      {/* Contenido de la página activa */}
       <main className="flex-1">
-        
-        {/* Section A: Inicio & Hero Presentation */}
-        <div id="inicio">
+        {activeSection === 'inicio' && (
           <Hero
-            onExploreCatalog={() => scrollToSection('actividades')}
-            onExploreGuides={() => scrollToSection('guias')}
-            onExploreZones={() => scrollToSection('zonas')}
+            onNavigate={navigateTo}
+            onSelectZone={handleFilterByZone}
+            onSelectGuide={handleSelectGuideFromOther}
           />
-        </div>
+        )}
 
-        {/* Section B: Conoce el Aula (4 Zonas Tecnológicas) */}
-        <ZoneCards
-          zones={zonesData as Zone[]}
-          onSelectGuide={handleSelectGuideFromOther}
-          onFilterByZone={handleFilterByZone}
-        />
+        {activeSection === 'zonas' && (
+          <ZoneCards
+            zones={zonesData as Zone[]}
+            onSelectGuide={handleSelectGuideFromOther}
+            onFilterByZone={handleFilterByZone}
+          />
+        )}
 
-        {/* Section C: Actividades Didácticas (SECCIÓN PRIORITARIA) */}
-        <CatalogSection
-          activities={activitiesData as Activity[]}
-          onSelectGuide={handleSelectGuideFromOther}
-          selectedZoneFilter={selectedZoneFilter}
-          onClearZoneFilter={() => setSelectedZoneFilter('ALL')}
-        />
+        {activeSection === 'actividades' && (
+          <CatalogSection
+            activities={activitiesData as Activity[]}
+            onSelectGuide={handleSelectGuideFromOther}
+            selectedZoneFilter={selectedZoneFilter}
+            onClearZoneFilter={() => setSelectedZoneFilter('ALL')}
+          />
+        )}
 
-        {/* Section D: Puesta en Marcha Rápida (SEGUNDA SECCIÓN PRIORITARIA) */}
-        <QuickStartGuides
-          guides={equipmentGuidesData as EquipmentGuide[]}
-          selectedGuideId={selectedGuideId}
-          onSelectGuide={(id) => setSelectedGuideId(id)}
-        />
+        {activeSection === 'guias' && (
+          <QuickStartGuides
+            guides={equipmentGuidesData as EquipmentGuide[]}
+            selectedGuideId={selectedGuideId}
+            onSelectGuide={(id) => setSelectedGuideId(id)}
+          />
+        )}
 
-        {/* Section E: Experiencias y Buenas Prácticas */}
-        <ExperiencesSection
-          experiences={experiencesData as Experience[]}
-        />
+        {activeSection === 'experiencias' && (
+          <ExperiencesSection
+            experiences={experiencesData as Experience[]}
+          />
+        )}
 
-        {/* Section F: Reservas y Gobernanza del Espacio */}
-        <BookingSection />
-
-        {/* Section G: Información Institucional y Financiación */}
-        <InstitutionalSection />
-
+        {activeSection === 'institucional' && (
+          <div>
+            <BookingSection />
+            <InstitutionalSection />
+          </div>
+        )}
       </main>
 
-      {/* Footer */}
+      {/* Pie de página presente en todas las páginas */}
       <Footer
-        onNavigate={scrollToSection}
+        onNavigate={navigateTo}
       />
 
     </div>
