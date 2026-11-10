@@ -76,6 +76,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onSelectZone, onSelectGu
       {/* Bloque Principal (Minimizable y Maximizable) */}
       <WindowBox
         forceMinimized={allMinimized}
+        allowMaximize={true}
         badge={
           <span className="text-[11px] font-bold text-cyan-800 dark:text-cyan-400 uppercase tracking-wider">
             IES Agustín de Betancourt · Aula 19 · {APP_VERSION} ({LAST_UPDATED})
@@ -84,19 +85,19 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onSelectZone, onSelectGu
         title="Espacio de Tecnología Aplicada para Formación Profesional"
         subtitle="Actividades de 55 min, guías rápidas con QR y reserva directa"
       >
-        <div className="bg-slate-900 text-white rounded-2xl overflow-hidden grid lg:grid-cols-12 mt-1">
+        <div className="bg-slate-900 text-white rounded-2xl overflow-hidden grid lg:grid-cols-12 mt-1 shadow-inner">
           <div className="lg:col-span-7 p-5 sm:p-7 flex flex-col justify-between space-y-4">
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
               Selecciona una sección para preparar tu sesión de clase o utiliza los botones superiores
               para ajustar el <strong>tamaño de letra (A- / A+)</strong>, alternar entre <strong>modo claro / oscuro</strong>
-              e identificarte como docente.
+              e identificarte como docente para crear o enriquecer fichas.
             </p>
 
             <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={() => onNavigate('actividades')}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-extrabold text-xs sm:text-sm cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-extrabold text-xs sm:text-sm shadow-sm transition-transform active:scale-95 cursor-pointer"
               >
                 <BookOpen className="w-4 h-4" />
                 <span>38 Actividades</span>
@@ -106,7 +107,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onSelectZone, onSelectGu
               <button
                 type="button"
                 onClick={() => onNavigate('guias')}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/15 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/15 transition-colors cursor-pointer"
               >
                 <Wrench className="w-4 h-4 text-cyan-300" />
                 <span>8 Guías Rápidas</span>
@@ -116,7 +117,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onSelectZone, onSelectGu
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm shadow-sm transition-colors"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Reservar Aula</span>
@@ -140,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onSelectZone, onSelectGu
             </div>
           </div>
 
-          <div className="lg:col-span-5 relative min-h-[200px] sm:min-h-[240px] bg-slate-800">
+          <div className="lg:col-span-5 relative min-h-[220px] sm:min-h-[260px] bg-slate-800">
             <img
               src="./hero-ateca.jpg"
               alt="Equipamiento del Aula ATECA"
@@ -169,32 +170,33 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onSelectZone, onSelectGu
         </div>
       </WindowBox>
 
-      {/* Las 4 zonas en cuadraditos individuales minimizables/maximizables */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+      {/* Las 4 zonas en tarjetas uniformes */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {quickZones.map((z) => {
           const Icon = z.icon;
           return (
             <WindowBox
               key={z.id}
               forceMinimized={allMinimized}
+              allowMaximize={false}
               badge={
                 <span className="inline-flex items-center gap-1 text-[11px] font-bold text-cyan-800 dark:text-cyan-300">
                   <Icon className="w-3.5 h-3.5" /> Zona Aula 19
                 </span>
               }
               title={z.title}
-              subtitle={z.subtitle}
+              subtitle={<span className="line-clamp-2 h-8 block">{z.subtitle}</span>}
             >
-              <div className="space-y-2.5">
-                <div className="h-28 rounded-xl overflow-hidden bg-slate-100">
+              <div className="space-y-3 pt-1">
+                <div className="h-32 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700 relative">
                   <img
                     src={z.image}
                     alt={z.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                   />
                 </div>
-                <div className="flex items-center justify-between pt-1 text-xs font-bold">
+                <div className="flex items-center justify-between pt-1 text-xs font-bold gap-2">
                   <button
                     type="button"
                     onClick={() => onSelectZone(z.id)}
@@ -205,7 +207,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onSelectZone, onSelectGu
                   <button
                     type="button"
                     onClick={() => onSelectGuide(z.guideId)}
-                    className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white cursor-pointer"
+                    className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-white transition-colors cursor-pointer"
                   >
                     Guía 5 pasos
                   </button>

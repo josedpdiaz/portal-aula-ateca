@@ -249,11 +249,12 @@ export const QuickStartGuides: React.FC<QuickStartGuidesProps> = ({
         <div className="grid lg:grid-cols-2 gap-4 mb-4">
           <WindowBox
             forceMinimized={allMinimized}
+            allowMaximize={true}
             title={`1. Vídeo práctico (máx. ${g.video?.maxMinutes ?? 5} min)`}
             subtitle="Explicación visual rápida antes de tocar el equipo"
           >
             {vid ? (
-              <div className="w-full flex-1 aspect-video min-h-[220px] max-h-[82vh] rounded-xl overflow-hidden bg-black shadow-lg">
+              <div className="w-full flex-1 aspect-video min-h-[220px] max-w-5xl mx-auto rounded-2xl overflow-hidden bg-black shadow-2xl flex items-center justify-center my-auto">
                 <iframe
                   className="w-full h-full"
                   src={`https://www.youtube-nocookie.com/embed/${vid}`}
@@ -292,16 +293,17 @@ export const QuickStartGuides: React.FC<QuickStartGuidesProps> = ({
 
           <WindowBox
             forceMinimized={allMinimized}
+            allowMaximize={true}
             title="2. Receta de puesta en marcha en 5 pasos"
             subtitle={g.quickStart5Min.summary}
           >
-            <ol className="space-y-2 pt-1">
+            <ol className="space-y-2.5 pt-1">
               {g.quickStart5Min.steps.map((s, i) => (
                 <li
                   key={i}
-                  className="flex gap-2.5 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm"
+                  className="flex gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium"
                 >
-                  <span className="w-6 h-6 rounded-full bg-cyan-700 text-white font-bold text-xs flex items-center justify-center shrink-0">
+                  <span className="w-6 h-6 rounded-full bg-cyan-700 text-white font-extrabold text-xs flex items-center justify-center shrink-0">
                     {i + 1}
                   </span>
                   <span className="leading-snug">{s.replace(/^\d+\.\s*/, '')}</span>

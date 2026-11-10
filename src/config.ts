@@ -6,7 +6,7 @@
  *   profesorado autorizado pueda crear y editar actividades, experiencias y consejos en vivo.
  * - googleSheetId y googleSheetUrl referencian la hoja de cálculo oficial de respaldo en Google Drive.
  */
-export const APP_VERSION = 'v1.3.1';
+export const APP_VERSION = 'v1.4.0';
 export const LAST_UPDATED = '10 de noviembre de 2026';
 export const BOOKING_URL = 'https://ateca.fpapps.es';
 

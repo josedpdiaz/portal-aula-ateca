@@ -201,8 +201,21 @@ export const WindowBox: React.FC<{
   defaultMinimized?: boolean;
   forceMinimized?: boolean;
   className?: string;
+  allowMaximize?: boolean;
+  allowMinimize?: boolean;
   children: React.ReactNode;
-}> = ({ title, subtitle, badge, actions, defaultMinimized = false, forceMinimized, className = '', children }) => {
+}> = ({
+  title,
+  subtitle,
+  badge,
+  actions,
+  defaultMinimized = false,
+  forceMinimized,
+  className = '',
+  allowMaximize = false,
+  allowMinimize = true,
+  children,
+}) => {
   const [minimized, setMinimized] = useState(defaultMinimized);
   const [maximized, setMaximized] = useState(false);
 
@@ -225,25 +238,37 @@ export const WindowBox: React.FC<{
     <div
       className={`border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 transition-all ${
         maximized
-          ? 'fixed inset-0 z-50 overflow-y-auto shadow-2xl p-4 sm:p-8 rounded-none flex flex-col justify-start bg-white dark:bg-slate-900'
+          ? 'fixed inset-0 z-50 overflow-y-auto shadow-2xl p-4 sm:p-6 lg:p-8 rounded-none flex flex-col justify-start bg-slate-950/95 backdrop-blur-md text-slate-100'
           : `rounded-2xl shadow-sm hover:shadow-md ${className}`
       }`}
     >
-      <div className={`flex items-start justify-between gap-3 ${maximized ? 'pb-4 border-b border-slate-200 dark:border-slate-700 mb-4' : 'p-4 pb-2'}`}>
+      <div
+        className={`flex items-start justify-between gap-3 ${
+          maximized ? 'pb-4 border-b border-slate-700 mb-5 shrink-0 max-w-6xl mx-auto w-full' : 'p-4 pb-2'
+        }`}
+      >
         <div className="min-w-0 flex-1">
           {badge && <div className="mb-1.5">{badge}</div>}
-          <div className={`font-bold text-slate-900 dark:text-slate-100 leading-snug ${maximized ? 'text-lg sm:text-2xl' : 'text-sm sm:text-base'}`}>
+          <div
+            className={`font-bold leading-snug ${
+              maximized ? 'text-lg sm:text-2xl text-white' : 'text-sm sm:text-base text-slate-900 dark:text-slate-100'
+            }`}
+          >
             {title}
           </div>
           {subtitle && (
-            <div className={`text-slate-500 dark:text-slate-400 mt-0.5 ${maximized ? 'text-sm sm:text-base' : 'text-xs'}`}>
+            <div
+              className={`mt-0.5 ${
+                maximized ? 'text-xs sm:text-sm text-slate-300' : 'text-xs text-slate-500 dark:text-slate-400'
+              }`}
+            >
               {subtitle}
             </div>
           )}
         </div>
         <div className="flex items-center gap-1.5 shrink-0">
           {actions}
-          {!maximized && (
+          {allowMinimize && !maximized && (
             <button
               type="button"
               onClick={() => setMinimized(m => !m)}
@@ -253,20 +278,35 @@ export const WindowBox: React.FC<{
               {minimized ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
             </button>
           )}
-          <button
-            type="button"
-            onClick={() => { setMinimized(false); setMaximized(x => !x); }}
-            title={maximized ? 'Restaurar tamaño (Esc)' : 'Maximizar a pantalla completa (100%)'}
-            className="p-2 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-600 inline-flex items-center gap-1 text-xs font-bold"
-          >
-            {maximized ? <Minimize2 className="w-4 h-4 text-cyan-600" /> : <Maximize2 className="w-4 h-4" />}
-            <span>{maximized ? 'Salir de pantalla completa' : 'Maximizar'}</span>
-          </button>
+          {allowMaximize && (
+            <button
+              type="button"
+              onClick={() => { setMinimized(false); setMaximized(x => !x); }}
+              title={maximized ? 'Restaurar tamaño (Esc)' : 'Maximizar a pantalla completa (100%)'}
+              className={`p-2 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 transition-colors ${
+                maximized
+                  ? 'bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold shadow-lg'
+                  : 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-600'
+              }`}
+            >
+              {maximized ? (
+                <>
+                  <Minimize2 className="w-4 h-4" />
+                  <span>Restaurar (Esc)</span>
+                </>
+              ) : (
+                <>
+                  <Maximize2 className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                  <span className="text-xs">Maximizar</span>
+                </>
+              )}
+            </button>
+          )}
         </div>
       </div>
 
       {!minimized && (
-        <div className={maximized ? 'flex-1 flex flex-col justify-start w-full' : 'px-4 pb-4 pt-1'}>
+        <div className={maximized ? 'flex-1 flex flex-col justify-start w-full max-w-6xl mx-auto' : 'px-4 pb-4 pt-1'}>
           {children}
         </div>
       )}
