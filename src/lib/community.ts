@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Activity, Experience, GuideTip } from '../types';
-import { COMMUNITY, BOOKING_URL } from '../config';
+import { Activity, EquipmentGuide, Experience, GuideTip, TeacherSession } from '../types';
+import { COMMUNITY, BOOKING_URL, DEPARTMENTS } from '../config';
 
 /** Parser CSV mínimo (RFC 4180: comillas, comas y saltos de línea dentro de campos). */
 export function parseCsv(text: string): Record<string, string>[] {
@@ -81,15 +81,132 @@ export function rowToActivity(r: Record<string, string>, i: number): Activity {
     videoUrl: r.video || undefined,
     source: 'profesorado',
     author: r.autor || r.autora || undefined,
+    authorEmail: r.correo || undefined,
+    department: r.departamento || undefined,
   };
 }
 
+// ============================================================================
+// SISTEMA CENTRALIZADO DE AUTENTICACIÓN DOCENTE
+// ============================================================================
+const AUTH_KEY = 'ateca_teacher_session_v1';
+
+export function isValidTeacherEmail(email: string): boolean {
+  const clean = email.trim().toLowerCase();
+  if (!clean.includes('@')) return false;
+  return (
+    clean.endsWith('@gobiernodecanarias.org') ||
+    clean.endsWith('@canariaseducacion.es') ||
+    clean.endsWith('@iesagustindebetancourt.org') ||
+    clean === 'josedpdiaz@gmail.com'
+  );
+}
+
+export function getTeacherSession(): TeacherSession | null {
+  try {
+    const raw = localStorage.getItem(AUTH_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as TeacherSession;
+    if (!parsed || !parsed.email || !parsed.pin) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+export function loginTeacher(
+  email: string,
+  name: string,
+  department: string,
+  pin: string
+): { ok: boolean; error?: string; session?: TeacherSession } {
+  const cleanEmail = email.trim().toLowerCase();
+  const cleanName = name.trim();
+  const cleanDept = department.trim() || DEPARTMENTS[0];
+  const cleanPin = pin.trim();
+
+  if (!cleanEmail) {
+    return { ok: false, error: 'Falta el campo «Correo corporativo docente».' };
+  }
+  if (!isValidTeacherEmail(cleanEmail)) {
+    return {
+      ok: false,
+      error: 'El correo debe ser corporativo (@gobiernodecanarias.org, @canariaseducacion.es o @iesagustindebetancourt.org).',
+    };
+  }
+  if (!cleanName) {
+    return { ok: false, error: 'Falta el campo «Nombre y apellidos del docente».' };
+  }
+  if (!cleanPin) {
+    return { ok: false, error: 'Falta el campo «Clave docente ATECA».' };
+  }
+  if (cleanPin.toUpperCase() !== 'ATECA2026') {
+    return {
+      ok: false,
+      error: 'Clave docente incorrecta. Solicítala a la coordinación del Aula ATECA (por defecto: ATECA2026).',
+    };
+  }
+
+  const session: TeacherSession = {
+    email: cleanEmail,
+    name: cleanName,
+    department: cleanDept,
+    pin: cleanPin,
+  };
+  try {
+    localStorage.setItem(AUTH_KEY, JSON.stringify(session));
+  } catch {
+    // ignore storage errors
+  }
+  window.dispatchEvent(new CustomEvent('ateca-auth-changed'));
+  return { ok: true, session };
+}
+
+export function logoutTeacher() {
+  try {
+    localStorage.removeItem(AUTH_KEY);
+  } catch {
+    // ignore
+  }
+  window.dispatchEvent(new CustomEvent('ateca-auth-changed'));
+}
+
+export function requestTeacherAuth(onSuccess?: () => void) {
+  window.dispatchEvent(new CustomEvent('ateca-open-auth-modal', { detail: { onSuccess } }));
+}
+
+export function useTeacherSession() {
+  const [session, setSession] = useState<TeacherSession | null>(() => getTeacherSession());
+
+  useEffect(() => {
+    const sync = () => setSession(getTeacherSession());
+    window.addEventListener('ateca-auth-changed', sync);
+    window.addEventListener('storage', sync);
+    return () => {
+      window.removeEventListener('ateca-auth-changed', sync);
+      window.removeEventListener('storage', sync);
+    };
+  }, []);
+
+  return {
+    session,
+    isAuthenticated: !!session,
+    login: loginTeacher,
+    logout: logoutTeacher,
+    requestAuth: requestTeacherAuth,
+  };
+}
+
+// ============================================================================
+// ALMACENAMIENTO COMUNITARIO (CASOS, GUÍAS, EXPERIENCIAS, CONSEJOS)
+// ============================================================================
 export type LoadState = 'off' | 'loading' | 'ok' | 'error';
 
-const LOCAL_KEY = 'ateca_community_cache_v1';
+const LOCAL_KEY = 'ateca_community_cache_v2';
 
-interface CommunityStore {
+export interface CommunityStore {
   cases: Activity[];
+  guides: EquipmentGuide[];
   experiences: Experience[];
   tips: GuideTip[];
 }
@@ -97,15 +214,16 @@ interface CommunityStore {
 function readLocalCache(): CommunityStore {
   try {
     const raw = localStorage.getItem(LOCAL_KEY);
-    if (!raw) return { cases: [], experiences: [], tips: [] };
+    if (!raw) return { cases: [], guides: [], experiences: [], tips: [] };
     const parsed = JSON.parse(raw);
     return {
       cases: Array.isArray(parsed.cases) ? parsed.cases : [],
+      guides: Array.isArray(parsed.guides) ? parsed.guides : [],
       experiences: Array.isArray(parsed.experiences) ? parsed.experiences : [],
       tips: Array.isArray(parsed.tips) ? parsed.tips : [],
     };
   } catch {
-    return { cases: [], experiences: [], tips: [] };
+    return { cases: [], guides: [], experiences: [], tips: [] };
   }
 }
 
@@ -117,7 +235,7 @@ function writeLocalCache(store: CommunityStore) {
   }
 }
 
-/** Obtiene los datos del conector PHP del servidor (con respaldo en localStorage y Google Sheets CSV). */
+/** Obtiene los datos del conector PHP del servidor (con respaldo en localStorage). */
 export async function fetchCommunityStore(): Promise<CommunityStore> {
   const cached = readLocalCache();
   try {
@@ -127,6 +245,7 @@ export async function fetchCommunityStore(): Promise<CommunityStore> {
       if (json && json.ok && json.data) {
         const store: CommunityStore = {
           cases: Array.isArray(json.data.cases) ? json.data.cases : [],
+          guides: Array.isArray(json.data.guides) ? json.data.guides : [],
           experiences: Array.isArray(json.data.experiences) ? json.data.experiences : [],
           tips: Array.isArray(json.data.tips) ? json.data.tips : [],
         };
@@ -140,38 +259,53 @@ export async function fetchCommunityStore(): Promise<CommunityStore> {
   return cached;
 }
 
-/** Guarda o edita un elemento ('cases' | 'experiences' | 'tips') validando correo docente y PIN. */
+/** Guarda o edita un elemento ('cases' | 'guides' | 'experiences' | 'tips') usando la sesión docente activa. */
 export async function saveCommunityItem<T extends { id?: string }>(
-  type: 'cases' | 'experiences' | 'tips',
-  email: string,
-  pin: string,
-  item: T
+  type: 'cases' | 'guides' | 'experiences' | 'tips',
+  item: T,
+  overrideAuth?: { email: string; pin: string; name?: string; department?: string }
 ): Promise<{ ok: boolean; error?: string; item?: T }> {
-  const cleanEmail = email.trim().toLowerCase();
-  const validDomain =
-    cleanEmail.endsWith('@gobiernodecanarias.org') ||
-    cleanEmail.endsWith('@canariaseducacion.es') ||
-    cleanEmail.endsWith('@iesagustindebetancourt.org') ||
-    cleanEmail === 'josedpdiaz@gmail.com';
+  const session = getTeacherSession();
+  const email = (overrideAuth?.email || session?.email || '').trim().toLowerCase();
+  const pin = (overrideAuth?.pin || session?.pin || '').trim();
+  const author = (overrideAuth?.name || session?.name || '').trim();
+  const department = (overrideAuth?.department || session?.department || DEPARTMENTS[0]).trim();
 
-  if (!validDomain) {
+  if (!email || !isValidTeacherEmail(email)) {
     return {
       ok: false,
-      error: 'Usa tu correo docente autorizado (@gobiernodecanarias.org o @canariaseducacion.es).',
+      error: 'Debes autentificarte primero con tu correo corporativo docente (@gobiernodecanarias.org o @canariaseducacion.es).',
     };
   }
-  if (pin.trim().toUpperCase() !== 'ATECA2026') {
+  if (pin.toUpperCase() !== 'ATECA2026') {
     return {
       ok: false,
-      error: 'Código docente incorrecto (solicítalo a la coordinación del Aula ATECA).',
+      error: 'Clave docente incorrecta. Verifica tu sesión en «Acceso Docente».',
     };
   }
+
+  const nowStr = new Date().toLocaleDateString('es-ES');
+  const enrichedItem = {
+    ...item,
+    id: item.id || `${type}-${Date.now()}`,
+    author: author || (item as Record<string, unknown>).author || email.split('@')[0],
+    authorEmail: email,
+    department: department || (item as Record<string, unknown>).department || DEPARTMENTS[0],
+    updatedAt: nowStr,
+  } as T;
 
   try {
     const res = await fetch(COMMUNITY.apiEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type, email: cleanEmail, pin: pin.trim(), item }),
+      body: JSON.stringify({
+        type,
+        email,
+        pin,
+        author: (enrichedItem as Record<string, unknown>).author,
+        department: (enrichedItem as Record<string, unknown>).department,
+        item: enrichedItem,
+      }),
     });
     const json = await res.json();
     if (res.ok && json && json.ok) {
@@ -193,14 +327,13 @@ export async function saveCommunityItem<T extends { id?: string }>(
   }
 
   const current = readLocalCache();
-  const saved = { ...item, id: item.id || `${type}-${Date.now()}` } as T;
   const arr = [...(current[type] as unknown as T[])];
-  const idx = arr.findIndex(x => x.id === saved.id);
-  if (idx >= 0) arr[idx] = saved;
-  else arr.unshift(saved);
+  const idx = arr.findIndex(x => x.id === enrichedItem.id);
+  if (idx >= 0) arr[idx] = enrichedItem;
+  else arr.unshift(enrichedItem);
   writeLocalCache({ ...current, [type]: arr });
   window.dispatchEvent(new CustomEvent('ateca-community-updated'));
-  return { ok: true, item: saved };
+  return { ok: true, item: enrichedItem };
 }
 
 function useCommunityList<T>(key: keyof CommunityStore, csvUrl: string, csvMapper?: (r: Record<string, string>, i: number) => T) {
@@ -240,10 +373,15 @@ function useCommunityList<T>(key: keyof CommunityStore, csvUrl: string, csvMappe
 export const useCommunityCases = () =>
   useCommunityList<Activity>('cases', COMMUNITY.casesCsvUrl, rowToActivity);
 
+export const useCommunityGuides = () =>
+  useCommunityList<EquipmentGuide>('guides', '');
+
 export const useGuideTips = () =>
   useCommunityList<GuideTip>('tips', COMMUNITY.guideTipsCsvUrl, r => ({
     guideId: r.guia,
     author: r.autor || 'Docente',
+    authorEmail: r.correo || undefined,
+    department: r.departamento || undefined,
     tip: r.aportacion || r.consejo || '',
     videoUrl: r.video || undefined,
     date: r.marcatemporal,
@@ -267,6 +405,7 @@ export const useCommunityExperiences = () =>
     hasPhotos: !!r.fotos,
     photosUrl: r.fotos || undefined,
     author: r.autor || undefined,
+    authorEmail: r.correo || undefined,
   }));
 
 /** Devuelve el ID de YouTube de una URL (watch, youtu.be, shorts, embed) o null. */

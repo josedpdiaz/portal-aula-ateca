@@ -1,5 +1,12 @@
 export type ActivitySource = 'catalogo' | 'profesorado';
 
+export interface TeacherSession {
+  email: string;
+  name: string;
+  department: string;
+  pin: string;
+}
+
 export interface Activity {
   id: string;
   title: string;
@@ -34,6 +41,9 @@ export interface Activity {
   /** 'catalogo' = ficha del portal; 'profesorado' = aportada desde la hoja de cálculo. */
   source?: ActivitySource;
   author?: string;
+  authorEmail?: string;
+  department?: string;
+  updatedAt?: string;
 }
 
 export interface TroubleshootingItem {
@@ -73,15 +83,23 @@ export interface EquipmentGuide {
   troubleshooting: TroubleshootingItem[];
   externalLinks: ExternalLink[];
   qrCodeId: string;
+  author?: string;
+  authorEmail?: string;
+  department?: string;
+  updatedAt?: string;
 }
 
 /** Aportación de un docente a una guía (consejo práctico o vídeo), leída de la hoja de cálculo. */
 export interface GuideTip {
+  id?: string;
   guideId: string;
   author: string;
+  authorEmail?: string;
+  department?: string;
   tip: string;
   videoUrl?: string;
   date?: string;
+  updatedAt?: string;
 }
 
 export interface Zone {
@@ -115,5 +133,8 @@ export interface Experience {
   recommendations: string;
   hasPhotos: boolean;
   author?: string;
+  authorEmail?: string;
   photosUrl?: string;
+  updatedAt?: string;
 }
+

@@ -33,15 +33,16 @@ $gasFile  = __DIR__ . '/.gas_webapp_url';
 
 function loadStore(string $file): array {
     if (!file_exists($file)) {
-        return ['cases' => [], 'experiences' => [], 'tips' => []];
+        return ['cases' => [], 'guides' => [], 'experiences' => [], 'tips' => []];
     }
     $raw = @file_get_contents($file);
     $parsed = json_decode((string)$raw, true);
     if (!is_array($parsed)) {
-        return ['cases' => [], 'experiences' => [], 'tips' => []];
+        return ['cases' => [], 'guides' => [], 'experiences' => [], 'tips' => []];
     }
     return [
         'cases'       => isset($parsed['cases']) && is_array($parsed['cases']) ? $parsed['cases'] : [],
+        'guides'      => isset($parsed['guides']) && is_array($parsed['guides']) ? $parsed['guides'] : [],
         'experiences' => isset($parsed['experiences']) && is_array($parsed['experiences']) ? $parsed['experiences'] : [],
         'tips'        => isset($parsed['tips']) && is_array($parsed['tips']) ? $parsed['tips'] : [],
     ];
@@ -54,15 +55,9 @@ function saveStore(string $file, array $store): bool {
 
 $store = loadStore($dataFile);
 
-// GET: devolver todos los elementos publicados (sin exponer correos electrónicos)
+// GET: devolver todos los elementos publicados con el registro del docente (correo, nombre y departamento)
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $clean = $store;
-    foreach (['cases', 'experiences', 'tips'] as $k) {
-        foreach ($clean[$k] as &$item) {
-            unset($item['email']);
-        }
-    }
-    echo json_encode(['ok' => true, 'data' => $clean], JSON_UNESCAPED_UNICODE);
+    echo json_encode(['ok' => true, 'data' => $store], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -74,12 +69,14 @@ if (!is_array($input)) {
     exit;
 }
 
-$type  = isset($input['type']) ? trim((string)$input['type']) : '';
-$email = isset($input['email']) ? strtolower(trim((string)$input['email'])) : '';
-$pin   = isset($input['pin']) ? trim((string)$input['pin']) : '';
-$item  = isset($input['item']) && is_array($input['item']) ? $input['item'] : [];
+$type       = isset($input['type']) ? trim((string)$input['type']) : '';
+$email      = isset($input['email']) ? strtolower(trim((string)$input['email'])) : '';
+$pin        = isset($input['pin']) ? trim((string)$input['pin']) : '';
+$author     = isset($input['author']) ? trim((string)$input['author']) : '';
+$department = isset($input['department']) ? trim((string)$input['department']) : '';
+$item       = isset($input['item']) && is_array($input['item']) ? $input['item'] : [];
 
-if (!in_array($type, ['cases', 'experiences', 'tips'], true)) {
+if (!in_array($type, ['cases', 'guides', 'experiences', 'tips'], true)) {
     http_response_code(400);
     echo json_encode(['ok' => false, 'error' => 'Tipo de contenido no válido']);
     exit;
@@ -96,7 +93,7 @@ if (!$validDomain || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(403);
     echo json_encode([
         'ok' => false,
-        'error' => 'Introduce tu correo docente autorizado (@gobiernodecanarias.org o @canariaseducacion.es).'
+        'error' => 'Autenticación requerida: introduce un correo docente válido (@gobiernodecanarias.org o @canariaseducacion.es).'
     ]);
     exit;
 }
@@ -107,7 +104,7 @@ if ($expectedPin !== '' && !hash_equals(strtoupper($expectedPin), strtoupper($pi
     http_response_code(403);
     echo json_encode([
         'ok' => false,
-        'error' => 'Código docente incorrecto. Solicítalo a la coordinación del Aula ATECA.'
+        'error' => 'Clave docente incorrecta. Solicítala a la coordinación del Aula ATECA.'
     ]);
     exit;
 }
@@ -117,9 +114,15 @@ $id  = isset($item['id']) && trim((string)$item['id']) !== ''
     ? preg_replace('/[^a-zA-Z0-9_-]/', '', (string)$item['id'])
     : ($type . '-' . substr(md5(uniqid('', true)), 0, 10));
 
-$item['id']        = $id;
-$item['email']     = $email;
-$item['updatedAt'] = $now;
+$emailUser = explode('@', $email)[0] ?? 'Docente';
+$finalAuthor = $author !== '' ? $author : (isset($item['author']) && trim((string)$item['author']) !== '' ? trim((string)$item['author']) : $emailUser);
+$finalDept   = $department !== '' ? $department : (isset($item['department']) && trim((string)$item['department']) !== '' ? trim((string)$item['department']) : 'Administración y Gestión');
+
+$item['id']          = $id;
+$item['authorEmail'] = $email;
+$item['author']      = $finalAuthor;
+$item['department']  = $finalDept;
+$item['updatedAt']   = $now;
 
 // Buscar si ya existe para editarlo o añadirlo como nuevo
 $found = false;
@@ -158,11 +161,9 @@ if (file_exists($gasFile)) {
     }
 }
 
-$publicItem = $item;
-unset($publicItem['email']);
-
 echo json_encode([
     'ok'     => true,
     'action' => $found ? 'updated' : 'created',
-    'item'   => $publicItem
+    'item'   => $item
 ], JSON_UNESCAPED_UNICODE);
+

@@ -1,25 +1,21 @@
 [
   {
     "id": "zona-audiovisual",
-    "name": "Zona Multimedia, Croma y Colaboración",
+    "name": "Zona Multimedia y Croma",
     "icon": "Video",
-    "badge": "Audiovisual & Streaming",
-    "tagline": "Creación de contenidos, oratoria profesional, retransmisiones y podcasting educativo.",
+    "badge": "Grabación y Comunicación",
+    "tagline": "Grabación de vídeo, presentaciones orales, atención al cliente y podcast educativo.",
     "equipmentList": [
-      "Set de Croma profesional verde con sistema de tensado",
-      "Focos de iluminación LED de estudio con temperatura de color regulable",
-      "Cámara PTZ motorizada orientable con mando a distancia y presets memorizados",
-      "Cámara digital Canon EOS R50 en trípode para grabaciones en alta definición",
-      "Micrófonos inalámbricos de solapa y micrófonos de condensador de sobremesa",
-      "Mesa de mezclas de audio USB multicanal y auriculares de monitorización",
-      "Estabilizador gimbal Zhiyun Crane M3 Combo para grabaciones en movimiento"
+      "Fondo croma e iluminación de estudio",
+      "Cámara en trípode para grabación de vídeo",
+      "Micrófonos inalámbricos y sistema de grabación de audio",
+      "Puesto de edición de audio y vídeo"
     ],
-    "didacticUtility": "Permite al alumnado de Formación Profesional entrenar competencias comunicativas de alto nivel: video-pitch para rondas de inversores, atención a clientes y mediación en resolución de quejas, realización de podcast corporativo y simulaciones de ferias comerciales internacionales en falso directo.",
+    "didacticUtility": "Entrenamiento de comunicación oral y atención al cliente, grabación de píldoras formativas y creación de contenidos multimedia por el alumnado.",
     "examples": [
-      "Simulación de entrevistas de selección de personal y análisis de comunicación no verbal.",
-      "Grabación de video-pitch comercial con fondos dinámicos de salas ejecutivas o fábricas.",
-      "Showroom virtual de exportación de productos agroalimentarios canarios en streaming multilingüe.",
-      "Episodios de podcast corporativo sobre sostenibilidad y responsabilidad social empresarial."
+      "Simulación de entrevistas de selección y atención a clientes.",
+      "Grabación de videotutoriales breves (1–2 min) sobre el uso del equipamiento.",
+      "Presentaciones de proyectos y gestión de canal audiovisual educativo."
     ],
     "guideId": "guia-audiovisual",
     "audioGuideId": "guia-audio"
@@ -28,69 +24,57 @@
     "id": "zona-3d",
     "name": "Zona de Fabricación Digital 3D y Prototipado",
     "icon": "Box",
-    "badge": "Prototipado Rápido",
-    "tagline": "Digitalización 3D, ecodiseño de envases y prototipado físico de merchandising empresarial.",
+    "badge": "Impresión 3D y Escaneado",
+    "tagline": "Diseño e impresión 3D de recursos didácticos, cartelería y prototipos comerciales.",
     "equipmentList": [
-      "Impresora 3D Bambu Lab X1 Carbon Combo con sistema automático de material (AMS)",
-      "Escáner 3D Revopoint con mesa giratoria calibrada de 360°",
-      "Máquina cortadora y grabadora láser multifunción (módulos 10W)",
-      "Estación de soldadura de aire caliente y kits de robótica educativa Arduino/Raspberry Pi",
-      "Bobinas de filamento PLA ecológico, PETG y materiales biodegradables",
-      "Software de laminación Bambu Studio y herramientas CAD en los puestos del aula"
+      "Impresora 3D con sistema de filamento",
+      "Escáner 3D de sobremesa",
+      "Grabadora / cortadora láser",
+      "Software de laminación y diseño 3D"
     ],
-    "didacticUtility": "Conecta la gestión administrativa y comercial con el ciclo de vida del producto físico. El alumnado diseña, escanea y prototipa elementos reales, calculando costes de materias primas, tiempos de máquina y optimización del embalaje para logística y exportación.",
+    "didacticUtility": "Materialización de recursos para prácticas de empresa (como monedas de práctica para arqueo de caja, cartelería en relieve o envases y prototipos).",
     "examples": [
-      "Diseño y prototipado 3D de merchandising empresarial sostenible para empresas canarias.",
-      "Escaneado 3D de piezas y cálculo de volumetría para optimizar palés europeos en transporte aéreo.",
-      "Ecodiseño de packaging biodegradable para comercio electrónico interinsular e internacional.",
-      "Cálculo de costes de producción y memorias de amortización industrial de activos fijos."
+      "Impresión de monedas de práctica para arqueo de caja en PNG y COB.",
+      "Diseño de cartelería comercial y señalética de mostrador en CYA.",
+      "Maquetas de envases, embalajes y unidades de carga logística."
     ],
     "guideId": "guia-impresora3d"
   },
   {
     "id": "zona-vr",
-    "name": "Zona de Realidad Virtual (VR) e Inmersiva",
+    "name": "Zona de Realidad Virtual (VR)",
     "icon": "Glasses",
     "badge": "Entornos Inmersivos",
-    "tagline": "Entrenamiento inmersivo seguro de habilidades, prevención de riesgos y operativa logística.",
+    "tagline": "Prácticas inmersivas de prevención de riesgos, logística e idiomas.",
     "equipmentList": [
-      "6 visores de realidad virtual Meta Quest (modelos Quest 3 y Quest 3S) con controladores Touch Plus",
-      "Cuenta institucional centralizada: atecaiesagustindebetancourt@gmail.com vinculada a Meta Horizon",
-      "Simuladores inmersivos de Prevención de Riesgos Laborales (PRL) y Primeros Auxilios (Bakata Solutions / XRescue)",
-      "Entornos virtuales de inspección marítimo-portuaria y manipulación de contenedores",
-      "Monitores de apoyo Asus TUF de 31.5\" para retransmisión de la vista del alumno al resto del aula",
-      "2 ordenadores PC de altas prestaciones (Intel Ultra 9, GPU 12GB RTX) para renderizado gráfico"
+      "Gafas de Realidad Virtual (VR) autónomas",
+      "Cámara 360º para captura de espacios",
+      "Aplicaciones formativas de simulación y prevención"
     ],
-    "didacticUtility": "Facilita el entrenamiento en situaciones críticas donde el error en una empresa real conllevaría graves riesgos para la salud de las personas o costes económicos inasumibles. Los estudiantes practican en un entorno de riesgo cero.",
+    "didacticUtility": "Permite practicar situaciones de seguridad laboral, visitas virtuales a instalaciones logísticas y simulaciones comunicativas en entorno inmersivo.",
     "examples": [
-      "Inspección pericial de la trinca y estiba de contenedores en buques mercantes (norma CTU/IMO).",
-      "Simulación de emergencias, protocolos de evacuación en oficinas y primeros auxilios con XRescue.",
-      "Resolución de dilemas éticos y mediación de conflictos laborales en escenarios 360°.",
-      "Recorridos virtuales por almacenes automatizados y operaciones de picking con realidad mixta."
+      "Identificación de riesgos laborales y protocolos de emergencia en ITK/IPW.",
+      "Recorridos virtuales por almacenes e instalaciones de transporte.",
+      "Prácticas de comunicación y atención en lengua extranjera (IKL)."
     ],
     "guideId": "guia-vr"
   },
   {
     "id": "zona-simulacion",
-    "name": "Zona de Simulación Administrativa 2D y Trabajo Colaborativo",
+    "name": "Zona de Simulación Administrativa y Puestos PC",
     "icon": "LayoutDashboard",
     "badge": "Simulación Empresarial",
-    "tagline": "Entrenamiento práctico en fiscalidad canaria (REF), seguridad social, aduanas y ERP.",
+    "tagline": "Trabajo colaborativo con pantalla interactiva, puestos informáticos y software de gestión.",
     "equipmentList": [
-      "Pantalla interactiva táctil de 75 pulgadas ViewSonic ViewBoard 4K con pizarra colaborativa vBoard",
-      "2 monitores panorámicos de 31.5\" Asus TUF Full HD en puestos de control",
-      "11-12 puestos de trabajo informatizados con tomas dobles de red Cat6 certificada y enchufes Simón",
-      "Simulador Aduanero Canario (DUA de importación/exportación con tipos de AIEM e IGIC)",
-      "Simulador de la Seguridad Social (Sistema RED Directo: altas, bajas, RLC y RNT)",
-      "Simulador Tributario de la Agencia Tributaria Canaria (ATC) y de la AEAT (Modelos 420, 111, 190, 200)",
-      "Sistemas de gestión empresarial ERP (FacturaScripts, Factusol, Contasol, Nominasol)"
+      "Pantalla interactiva táctil de gran formato",
+      "Puestos informáticos para trabajo individual y en equipo",
+      "Aplicaciones ofimáticas, contables, comerciales y simuladores administrativos"
     ],
-    "didacticUtility": "Constituye el núcleo del entrenamiento técnico de la familia de Administración y Gestión y Comercio Internacional. Permite simular el día a día de una oficina canaria real con todas las singularidades del Régimen Económico y Fiscal (REF).",
+    "didacticUtility": "Simulación de departamentos de una empresa (compras, ventas, contabilidad, recursos humanos y comercio internacional) y exposición de proyectos.",
     "examples": [
-      "Confección y validación del DUA canario calculando el arbitrio AIEM y las cuotas de IGIC.",
-      "Tramitación de contratos y liquidación de cotizaciones sociales en el Sistema RED.",
-      "Cálculo de la Reserva para Inversiones en Canarias (RIC) y cierre contable del ejercicio en ERP.",
-      "Construcción de cuadros de mando interactivos en Power BI sobre pantallas táctiles colaborativas."
+      "Gestión documental, facturación y contabilidad en empresa simulada.",
+      "Tramitación administrativa de operaciones comerciales y logísticas.",
+      "Defensa de proyectos intermodulares en la pantalla interactiva."
     ],
     "guideId": "guia-simuladores",
     "screenGuideId": "guia-pantalla",

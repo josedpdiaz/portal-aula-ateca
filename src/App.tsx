@@ -8,6 +8,7 @@ import { ExperiencesSection } from './components/ExperiencesSection';
 import { BookingSection } from './components/BookingSection';
 import { InstitutionalSection } from './components/InstitutionalSection';
 import { Footer } from './components/Footer';
+import { TeacherAuthModal } from './components/UiHelpers';
 
 import activitiesData from './data/activities.json';
 import equipmentGuidesData from './data/equipmentGuides.json';
@@ -60,9 +61,9 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-100/70 text-slate-900 selection:bg-cyan-100 selection:text-cyan-900">
-      
-      {/* Barra superior compacta con pestañas de páginas */}
+    <div className="min-h-screen flex flex-col bg-slate-100/70 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-cyan-100 selection:text-cyan-900">
+
+      {/* Barra superior compacta con pestañas, tamaño de letra, modo claro/oscuro y Acceso Docente */}
       <Navbar
         activeSection={activeSection}
         onNavigate={navigateTo}
@@ -89,7 +90,7 @@ export const App: React.FC = () => {
         {activeSection === 'actividades' && (
           <CatalogSection
             activities={activitiesData as Activity[]}
-            onSelectGuide={handleSelectGuideFromOther}
+            onOpenGuide={handleSelectGuideFromOther}
             selectedZoneFilter={selectedZoneFilter}
             onClearZoneFilter={() => setSelectedZoneFilter('ALL')}
           />
@@ -116,6 +117,9 @@ export const App: React.FC = () => {
           </div>
         )}
       </main>
+
+      {/* Modal global de autenticación docente */}
+      <TeacherAuthModal />
 
       {/* Pie de página presente en todas las páginas */}
       <Footer

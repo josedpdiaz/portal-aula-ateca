@@ -6,9 +6,18 @@
  *   profesorado autorizado pueda crear y editar actividades, experiencias y consejos en vivo.
  * - googleSheetId y googleSheetUrl referencian la hoja de cálculo oficial de respaldo en Google Drive.
  */
-export const APP_VERSION = 'v1.2.0';
+export const APP_VERSION = 'v1.3.0';
 export const LAST_UPDATED = '10 de noviembre de 2026';
 export const BOOKING_URL = 'https://ateca.fpapps.es';
+
+export const DEPARTMENTS = [
+  'Administración y Gestión',
+  'Comercio y Marketing',
+  'Informática y Comunicaciones',
+  'Formación y Orientación Laboral (FOL / EIE)',
+  'Actividades Físicas y Deportivas',
+  'Coordinación Aula ATECA / Otro departamento',
+];
 
 export const COMMUNITY = {
   apiEndpoint: './community-api.php',
@@ -22,3 +31,4 @@ export const COMMUNITY = {
   experiencesFormUrl: '',
   youtubeChannelUrl: '',
 };
+
