@@ -1,0 +1,29 @@
+name: Despliegue automático en Hostinger (fpapps.es/aula-ateca)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Copiar dist/ a Hostinger por SSH (rsync)
+        if: ${{ env.HOSTINGER_SSH_KEY != '' }}
+        env:
+          HOSTINGER_SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          HOSTINGER_HOST: ${{ secrets.HOSTINGER_HOST || '109.106.243.32' }}
+          HOSTINGER_PORT: ${{ secrets.HOSTINGER_PORT || '65002' }}
+          HOSTINGER_USER: ${{ secrets.HOSTINGER_USER || 'u220313307' }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$HOSTINGER_SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -p "$HOSTINGER_PORT" "$HOSTINGER_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_deploy -p $HOSTINGER_PORT -o StrictHostKeyChecking=no" \
+            ./dist/ "$HOSTINGER_USER@$HOSTINGER_HOST:~/domains/fpapps.es/public_html/aula-ateca/"
