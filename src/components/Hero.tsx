@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, ArrowRight, BookOpen, Wrench, Layers, Award, ShieldCheck, Video, Box, Glasses, Monitor, ExternalLink, Plus } from 'lucide-react';
+import { Calendar, ArrowRight, BookOpen, Wrench, Award, ShieldCheck, Video, Box, Glasses, Monitor, ExternalLink } from 'lucide-react';
 import { BOOKING_URL, LAST_UPDATED } from '../config';
 
 interface HeroProps {
