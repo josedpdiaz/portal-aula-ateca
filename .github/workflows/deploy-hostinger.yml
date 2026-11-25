@@ -27,3 +27,8 @@ jobs:
           rsync -avz --delete \
             -e "ssh -i ~/.ssh/id_deploy -p $HOSTINGER_PORT -o StrictHostKeyChecking=no" \
             ./dist/ "$HOSTINGER_USER@$HOSTINGER_HOST:~/domains/fpapps.es/public_html/aula-ateca/"
+          if [ -d "./formulario-asistencia" ]; then
+            rsync -avz \
+              -e "ssh -i ~/.ssh/id_deploy -p $HOSTINGER_PORT -o StrictHostKeyChecking=no" \
+              ./formulario-asistencia/ "$HOSTINGER_USER@$HOSTINGER_HOST:~/domains/fpapps.es/public_html/formulario-asistencia/"
+          fi

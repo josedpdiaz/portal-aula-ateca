@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taller práctico Aula ATECA: De tus materiales docentes a una presentación y un manual didáctico con IA</title>
+  <meta name="description" content="Inscripción al Taller práctico para el profesorado — Jueves, 26 de noviembre (15:30 – 16:45) en el Aula ATECA. Plazo para confirmar: Lunes, 23 de noviembre." />
+  <!-- Metaetiquetas optimizadas para vista previa rica en WhatsApp -->
+  <meta property="og:site_name" content="Aula ATECA · FPapps.es" />
+  <meta property="og:title" content="📋 Confirmar asistencia: Taller IA en el Aula ATECA (Jueves 26 Nov · 15:30h)" />
+  <meta property="og:description" content="De tus materiales docentes a una presentación y un manual didáctico con IA. Confirma tu asistencia en 30 segundos desde el móvil (Plazo: lunes 23 de noviembre)." />
+  <meta property="og:image" content="https://fpapps.es/formulario-asistencia/cartel-taller.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:url" content="https://fpapps.es/formulario-asistencia/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://fpapps.es/formulario-asistencia/cartel-taller.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-page: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-subtle: #f8fafc;
+      --primary: #154384;
+      --primary-dark: #0d2e5c;
+      --accent: #6328c6;
+      --accent-soft: #f3e8ff;
+      --accent-border: #d8b4fe;
+      --success: #15803d;
+      --success-bg: #f0fdf4;
+      --success-border: #bbf7d0;
+      --danger: #b91c1c;
+      --danger-bg: #fef2f2;
+      --text-main: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow-sm: 0 2px 10px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 14px 34px rgba(21, 67, 132, 0.1);
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --radius-sm: 9px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(circle at top, #ede9fe 0%, #e0f2fe 45%, var(--bg-page) 100%);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      padding-bottom: 3rem;
+    }
+
+    /* Barra superior limpia */
+    .topbar {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .topbar-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand img {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: block;
+    }
+
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid var(--success-border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 1.25rem auto 0;
+      padding: 0 0.9rem;
+    }
+
+    /* Cartel oficial directo a la vista (sin texto duplicado) */
+    .poster-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+
+    .poster-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Tarjetas de preguntas adaptables */
+    .question-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.45rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .question-card:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(99, 40, 198, 0.09);
+    }
+
+    .question-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.65rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .question-label {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.38;
+    }
+
+    .sub-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 0.45rem;
+    }
+
+    .question-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: -0.35rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .req-star {
+      color: var(--danger);
+      margin-left: 0.15rem;
+      font-weight: 800;
+    }
+
+    .badge-req, .badge-opt {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .badge-req {
+      background: #fef2f2;
+      color: var(--danger);
+      border: 1px solid #fecaca;
+    }
+
+    .badge-opt {
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+
+    .input-text, .input-select, .input-textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--radius-sm);
+      padding: 0.78rem 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .input-text:focus, .input-select:focus, .input-textarea:focus {
+      outline: none;
+      background: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(99, 40, 198, 0.12);
+    }
+
+    .input-textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    /* Opciones de asistencia (radio cards) */
+    .radio-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.9rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      background: #fafbff;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      user-select: none;
+    }
+
+    .radio-option:hover {
+      border-color: #94a3b8;
+      background: #ffffff;
+    }
+
+    .radio-option input[type="radio"] {
+      width: 19px;
+      height: 19px;
+      accent-color: var(--accent);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .radio-option.selected-yes {
+      border-color: var(--success);
+      background: var(--success-bg);
+    }
+
+    .radio-option.selected-no {
+      border-color: #64748b;
+      background: #f1f5f9;
+    }
+
+    .radio-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Botones seleccionables para módulos y formatos */
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .module-btn {
+      text-align: left;
+      background: #f8fafc;
+      color: var(--text-secondary);
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.8rem;
+      font-family: inherit;
+      font-size: 0.83rem;
+      font-weight: 600;
+      line-height: 1.35;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .module-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent-border);
+      color: var(--accent);
+    }
+
+    .module-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 3px 10px rgba(99, 40, 198, 0.22);
+    }
+
+    .other-module-box,
+    .other-dept-box {
+      display: none;
+      margin-top: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .other-module-box.visible,
+    .other-dept-box.visible {
+      display: block;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .chips-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .chip-btn {
+      background: #f1f5f9;
+      color: var(--text-secondary);
+      border: 1.5px solid #cbd5e1;
+      border-radius: 999px;
+      padding: 0.42rem 0.85rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .chip-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent-border);
+      color: var(--accent);
+    }
+
+    .chip-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    /* Bloques dinámicos según respuesta */
+    .conditional-block {
+      transition: all 0.25s ease;
+    }
+
+    .conditional-block.hidden-step {
+      display: none;
+    }
+
+    /* Botón de envío */
+    .submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.15rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: #ffffff;
+      border: none;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 0.95rem 1.85rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(99, 40, 198, 0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(99, 40, 198, 0.33);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
+    .btn-clear {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.45rem 0.7rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-clear:hover {
+      color: var(--danger);
+      background: #fef2f2;
+    }
+
+    /* Tarjeta de confirmación */
+    .confirmation-card {
+      display: none;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--success-border);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .confirmation-card.visible {
+      display: block;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .confirm-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--success-bg);
+      color: var(--success);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 0.85rem;
+      border: 2px solid var(--success-border);
+    }
+
+    .confirm-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.65rem;
+    }
+
+    .confirm-message {
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 1.15rem;
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.05rem;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      background: #ffffff;
+    }
+
+    /* Estadística agregada pública (sin datos personales ni enlaces a Sheets) */
+    .stats-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.35rem 1.45rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.25rem;
+    }
+
+    .stats-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stats-title {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .stats-subtitle {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .kpi-item {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 0.85rem;
+      text-align: center;
+    }
+
+    .kpi-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+
+    .kpi-item.yes .kpi-val { color: var(--success); }
+
+    .kpi-lbl {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .breakdown-col {
+      background: #fafbff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1rem;
+    }
+
+    .breakdown-col h3 {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.65rem;
+    }
+
+    .bar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .bar-row {
+      font-size: 0.82rem;
+    }
+
+    .bar-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.2rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .bar-count {
+      color: var(--accent);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .bar-track {
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 999px;
+    }
+
+    .empty-stat {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .alert-error {
+      display: none;
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid #fecaca;
+      padding: 0.8rem 0.95rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 0.95rem;
+    }
+
+    .alert-error.visible {
+      display: block;
+    }
+
+    footer {
+      max-width: 720px;
+      margin: 1.5rem auto 0;
+      padding: 0 1rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 560px) {
+      .question-card { padding: 1.1rem 1.1rem; }
+      .btn-primary { width: 100%; }
+      .submit-row { flex-direction: column-reverse; align-items: stretch; }
+      .btn-clear { text-align: center; }
+      .kpi-val { font-size: 1.25rem; }
+      .module-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabecera institucional compacta -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="https://fpapps.es/aula-ateca/" class="brand">
+        <img src="./Logo.png" alt="Logo Aula ATECA" onerror="this.style.display='none'" />
+        <div>
+          <span class="brand-title">Aula ATECA · FPapps.es</span>
+          <span class="brand-sub">IES Agustín de Betancourt · Formación del Profesorado</span>
+        </div>
+      </a>
+      <a href="#estadisticas" class="live-pill" title="Ver resumen de participación">
+        📊 <span id="top-attending-count">0</span> confirmados
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 1. CARTEL OFICIAL DIRECTO A LA VISTA (sin bloque de texto repetido) -->
+    <figure class="poster-card">
+      <img
+        src="./cartel-taller.jpg"
+        alt="Cartel Taller práctico Aula ATECA: De tus materiales docentes a una presentación y un manual didáctico con IA — Jueves 26 de noviembre, 15:30 a 16:45"
+      />
+    </figure>
+
+    <!-- Pantalla de confirmación tras enviar -->
+    <div class="confirmation-card" id="confirmation-box" role="status" aria-live="polite">
+      <div class="confirm-icon">✓</div>
+      <h2 class="confirm-title">¡Confirmación registrada!</h2>
+      <p class="confirm-message" id="confirm-text">
+        ¡Gracias por confirmar! Recuerda traer tu portátil con wifi y al menos un material docente de tu módulo. Nos vemos el jueves 26 de noviembre a las 15:30 h en el Aula ATECA.
+      </p>
+      <button type="button" class="btn-secondary" onclick="resetForNewResponse()">
+        ✏️ Modificar mi respuesta o enviar otra
+      </button>
+    </div>
+
+    <!-- 2. FORMULARIO ADAPTATIVO -->
+    <form id="attendance-form" onsubmit="handleFormSubmit(event)" novalidate>
+      <div class="alert-error" id="form-error"></div>
+
+      <!-- Pregunta 1: Nombre y apellidos -->
+      <div class="question-card">
+        <div class="question-header">
+          <label class="question-label" for="input-nombre">
+            1. Nombre y apellidos <span class="req-star">*</span>
+          </label>
+          <span class="badge-req">Obligatoria</span>
+        </div>
+        <input
+          type="text"
+          id="input-nombre"
+          name="nombre"
+          class="input-text"
+          placeholder="Escribe tu nombre y apellidos..."
+          required
+          autocomplete="name"
+        />
+      </div>
+
+      <!-- Pregunta 2: Confirmación de asistencia -->
+      <div class="question-card">
+        <div class="question-header">
+          <span class="question-label" id="label-asistencia">
+            2. ¿Confirmas tu asistencia al taller del jueves 26 de noviembre (15:30 - 16:45)? <span class="req-star">*</span>
+          </span>
+          <span class="badge-req">Obligatoria</span>
+        </div>
+        <div class="radio-group" role="radiogroup" aria-labelledby="label-asistencia">
+          <label class="radio-option" id="card-yes">
+            <input
+              type="radio"
+              name="asistencia"
+              value="Sí, asistiré"
+              required
+              onchange="updateAdaptiveForm()"
+            />
+            <span class="radio-title">✅ Sí, asistiré</span>
+          </label>
+          <label class="radio-option" id="card-no">
+            <input
+              type="radio"
+              name="asistencia"
+              value="No podré asistir"
+              required
+              onchange="updateAdaptiveForm()"
+            />
+            <span class="radio-title">❌ No podré asistir</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Bloque adaptativo para quienes asisten -->
+      <div id="attending-questions" class="conditional-block">
+
+        <!-- Pregunta 3: Departamento y Ciclo Formativo -->
+        <div class="question-card">
+          <div class="question-header">
+            <span class="question-label">
+              3. Departamento / Especialidad y Ciclo Formativo <span class="req-star">*</span>
+            </span>
+            <span class="badge-req">Obligatoria si asistes</span>
+          </div>
+
+          <div style="margin-bottom: 0.9rem;">
+            <label class="sub-label" for="input-departamento">Departamento / Especialidad docente:</label>
+            <select id="input-departamento" name="departamento" class="input-select" onchange="handleDepartmentChange()">
+              <option value="">Selecciona tu departamento / especialidad...</option>
+              <optgroup label="Formación Profesional (FP)">
+                <option value="Administración de Empresas (Dpto. Administración y Gestión)">Administración de Empresas (Dpto. Administración y Gestión)</option>
+                <option value="Procesos de Gestión Administrativa (Dpto. Administración y Gestión)">Procesos de Gestión Administrativa (Dpto. Administración y Gestión)</option>
+                <option value="Comercio y Marketing">Comercio y Marketing</option>
+                <option value="Formación y Orientación Laboral (FOL)">Formación y Orientación Laboral (FOL)</option>
+              </optgroup>
+              <optgroup label="Otros departamentos del centro (ESO, Bachillerato, Orientación...)">
+                <option value="Biología y Geología">Biología y Geología</option>
+                <option value="Economía">Economía</option>
+                <option value="Educación Física">Educación Física</option>
+                <option value="Filosofía">Filosofía</option>
+                <option value="Física y Química">Física y Química</option>
+                <option value="Geografía e Historia">Geografía e Historia</option>
+                <option value="Informática">Informática</option>
+                <option value="Inglés">Inglés</option>
+                <option value="Lengua Castellana y Literatura">Lengua Castellana y Literatura</option>
+                <option value="Matemáticas">Matemáticas</option>
+                <option value="Orientación">Orientación</option>
+                <option value="Tecnología">Tecnología</option>
+                <option value="Otros">➕ Otros (especificar departamento)</option>
+              </optgroup>
+            </select>
+
+            <div class="other-dept-box" id="other-dept-container">
+              <label class="sub-label" for="input-departamento-otro">
+                Indica tu departamento / especialidad <span class="req-star">*</span>
+              </label>
+              <input
+                type="text"
+                id="input-departamento-otro"
+                name="departamento_otro"
+                class="input-text"
+                placeholder="Escribe tu departamento (ej.: Tecnología, Inglés, Física y Química, Matemáticas...)"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="sub-label" for="input-ciclo">Ciclo formativo:</label>
+            <select id="input-ciclo" name="ciclo" class="input-select">
+              <option value="">Selecciona el ciclo formativo...</option>
+              <option value="Ciclo Superior de Administración y Finanzas">Ciclo Superior de Administración y Finanzas</option>
+              <option value="Ciclo Medio de Gestión Administrativa">Ciclo Medio de Gestión Administrativa</option>
+              <option value="Ciclo Superior de Comercio Internacional (Comercio y Marketing)">Ciclo Superior de Comercio Internacional (Comercio y Marketing)</option>
+              <option value="Otros (en caso de no pertenecer a un ciclo, elige esta opción)">Otros (en caso de no pertenecer a un ciclo, elige esta opción)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Pregunta 4: Módulo / materia y formato de material docente -->
+        <div class="question-card">
+          <div class="question-header">
+            <label class="question-label" for="input-modulo">
+              4. ¿En qué módulo o materia y con qué material docente tienes pensado trabajar durante el taller?
+            </label>
+            <span class="badge-opt">Opcional</span>
+          </div>
+          <p class="question-hint">Selecciona el módulo con el que vas a trabajar (o pulsa «Otros» para escribir tu módulo o materia debajo):</p>
+
+          <div class="module-grid" role="group" aria-label="Módulos formativos y materias">
+            <button type="button" class="module-btn" onclick="selectModuleOption(this, 'PNG (Proceso Integral de la Actividad Comercial)')">
+              PNG (Proceso Integral de la Actividad Comercial)
+            </button>
+            <button type="button" class="module-btn" onclick="selectModuleOption(this, 'Gestión Financiera')">
+              Gestión Financiera
+            </button>
+            <button type="button" class="module-btn" onclick="selectModuleOption(this, 'Contabilidad y Fiscalidad')">
+              Contabilidad y Fiscalidad
+            </button>
+            <button type="button" class="module-btn" onclick="selectModuleOption(this, 'Recursos Humanos y Responsabilidad Social Corporativa')">
+              Recursos Humanos y Responsabilidad Social Corporativa
+            </button>
+            <button type="button" class="module-btn" onclick="selectModuleOption(this, 'Ofimática y Proceso de la Información')">
+              Ofimática y Proceso de la Información
+            </button>
+            <button type="button" class="module-btn" onclick="selectModuleOption(this, 'GIL (Gestión Logística y Comercial)')">
+              GIL (Gestión Logística y Comercial)
+            </button>
+            <button type="button" class="module-btn" onclick="selectModuleOption(this, 'Simulación Empresarial y Proyecto')">
+              Simulación Empresarial y Proyecto
+            </button>
+            <button type="button" class="module-btn" onclick="selectModuleOption(this, 'Comunicación y Atención al Cliente')">
+              Comunicación y Atención al Cliente
+            </button>
+            <button type="button" class="module-btn" onclick="selectModuleOption(this, 'Gestión de la Documentación Jurídica y Empresarial')">
+              Gestión de la Documentación Jurídica y Empresarial
+            </button>
+            <button type="button" class="module-btn" id="btn-module-other" onclick="selectOtherModule(this)">
+              ➕ Otros (indicar módulo o materia debajo)
+            </button>
+          </div>
+
+          <div class="other-module-box" id="other-module-container">
+            <input
+              type="text"
+              id="input-modulo-otro"
+              class="input-text"
+              placeholder="Escribe aquí el módulo, materia o tema con el que trabajarás..."
+            />
+          </div>
+
+          <input type="hidden" id="input-modulo" name="modulo_material" value="" />
+
+          <div style="margin-top: 0.9rem;">
+            <span class="sub-label">Formato del material que traerás en tu portátil (puedes marcar uno o varios):</span>
+            <div class="chips-wrap">
+              <button type="button" class="chip-btn mat-chip" onclick="toggleMaterialChip(this, 'PDF')">📄 PDF</button>
+              <button type="button" class="chip-btn mat-chip" onclick="toggleMaterialChip(this, 'Word')">📝 Word</button>
+              <button type="button" class="chip-btn mat-chip" onclick="toggleMaterialChip(this, 'Hoja de cálculo')">📊 Hoja de cálculo</button>
+              <button type="button" class="chip-btn mat-chip" onclick="toggleMaterialChip(this, 'Presentación')">🖥️ Presentación</button>
+              <button type="button" class="chip-btn mat-chip" onclick="toggleMaterialChip(this, 'Vídeo (MP4)')">🎬 Vídeo (MP4)</button>
+              <button type="button" class="chip-btn mat-chip" onclick="toggleMaterialChip(this, 'Audio (MP3)')">🎧 Audio (MP3)</button>
+            </div>
+            <input type="hidden" id="input-tipo-material" name="tipo_material" value="" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Pregunta 5: Observaciones, dudas o propuestas -->
+      <div class="question-card">
+        <div class="question-header">
+          <label class="question-label" for="input-observaciones" id="label-observaciones">
+            5. Observaciones, dudas o propuestas para la sesión
+          </label>
+          <span class="badge-opt">Opcional</span>
+        </div>
+        <textarea
+          id="input-observaciones"
+          name="observaciones"
+          class="input-textarea"
+          placeholder="Indica cualquier duda, sugerencia o necesidad para la sesión..."
+        ></textarea>
+      </div>
+
+      <div class="submit-row">
+        <button type="button" class="btn-clear" onclick="clearForm()">
+          Borrar formulario
+        </button>
+        <button type="submit" class="btn-primary" id="submit-btn">
+          <span>Enviar confirmación</span>
+          <span>→</span>
+        </button>
+      </div>
+    </form>
+
+    <!-- 3. PEQUEÑA ESTADÍSTICA PÚBLICA ANÓNIMA -->
+    <section class="stats-box" id="estadisticas" aria-label="Resumen estadístico de participación">
+      <div class="stats-header">
+        <h2 class="stats-title">📊 Resumen de participación por departamento, ciclo y módulo</h2>
+        <span class="stats-subtitle">Datos agregados anónimos en tiempo real</span>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-item yes">
+          <div class="kpi-val" id="stat-yes">0</div>
+          <div class="kpi-lbl">Asistirán al taller</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-val" id="stat-depts">0</div>
+          <div class="kpi-lbl">Dptos. / Ciclos</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-val" id="stat-total">0</div>
+          <div class="kpi-lbl">Respuestas totales</div>
+        </div>
+      </div>
+
+      <div class="breakdown-grid">
+        <div class="breakdown-col">
+          <h3>🏫 Por Departamento y Ciclo Formativo</h3>
+          <div class="bar-list" id="dept-bars">
+            <span class="empty-stat">Las estadísticas por departamento y ciclo aparecerán conforme se confirmen inscripciones.</span>
+          </div>
+        </div>
+        <div class="breakdown-col">
+          <h3>📚 Módulos previstos</h3>
+          <div class="bar-list" id="module-bars">
+            <span class="empty-stat">Los módulos indicados por los asistentes se mostrarán aquí.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      <strong>Aula ATECA · IES Agustín de Betancourt</strong> ·
+      <a href="https://fpapps.es/aula-ateca/">Volver al Portal del Aula ATECA</a>
+    </p>
+  </footer>
+
+  <script>
+    let isOtherModuleSelected = false;
+
+    function updateAdaptiveForm() {
+      const selected = document.querySelector('input[name="asistencia"]:checked');
+      const yesCard = document.getElementById('card-yes');
+      const noCard = document.getElementById('card-no');
+      const attendingBlock = document.getElementById('attending-questions');
+      const obsLabel = document.getElementById('label-observaciones');
+      const obsInput = document.getElementById('input-observaciones');
+
+      yesCard.classList.remove('selected-yes');
+      noCard.classList.remove('selected-no');
+
+      if (!selected) {
+        attendingBlock.classList.remove('hidden-step');
+        obsLabel.textContent = '5. Observaciones, dudas o propuestas para la sesión';
+        return;
+      }
+
+      if (selected.value === 'Sí, asistiré') {
+        yesCard.classList.add('selected-yes');
+        attendingBlock.classList.remove('hidden-step');
+        obsLabel.textContent = '5. Observaciones, dudas o propuestas para la sesión';
+        obsInput.placeholder = 'Indica cualquier duda, sugerencia o necesidad para la sesión...';
+      } else {
+        noCard.classList.add('selected-no');
+        attendingBlock.classList.add('hidden-step');
+        obsLabel.textContent = '3. Observaciones o comentario (opcional)';
+        obsInput.placeholder = 'Si te interesa otra edición en otro horario o quieres dejar algún comentario, escríbelo aquí...';
+      }
+    }
+
+    function handleDepartmentChange() {
+      const deptSelect = document.getElementById('input-departamento');
+      const otherBox = document.getElementById('other-dept-container');
+      const otherInput = document.getElementById('input-departamento-otro');
+      if (deptSelect.value === 'Otros') {
+        otherBox.classList.add('visible');
+        otherInput.focus();
+      } else {
+        otherBox.classList.remove('visible');
+        otherInput.value = '';
+      }
+    }
+
+    function selectModuleOption(btn, moduleName) {
+      isOtherModuleSelected = false;
+      document.querySelectorAll('.module-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('other-module-container').classList.remove('visible');
+      document.getElementById('input-modulo').value = moduleName;
+    }
+
+    function selectOtherModule(btn) {
+      isOtherModuleSelected = true;
+      document.querySelectorAll('.module-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const box = document.getElementById('other-module-container');
+      box.classList.add('visible');
+      const otherInput = document.getElementById('input-modulo-otro');
+      otherInput.focus();
+    }
+
+    function toggleMaterialChip(btn, matType) {
+      btn.classList.toggle('active');
+      const selectedMats = Array.from(document.querySelectorAll('.mat-chip.active')).map(b => {
+        return b.getAttribute('onclick').match(/'([^']+)'/)[1];
+      });
+      document.getElementById('input-tipo-material').value = selectedMats.join(', ');
+    }
+
+    function clearForm() {
+      document.getElementById('attendance-form').reset();
+      isOtherModuleSelected = false;
+      document.querySelectorAll('.module-btn, .chip-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('other-dept-container').classList.remove('visible');
+      document.getElementById('input-departamento-otro').value = '';
+      document.getElementById('other-module-container').classList.remove('visible');
+      document.getElementById('input-modulo').value = '';
+      document.getElementById('input-tipo-material').value = '';
+      updateAdaptiveForm();
+      document.getElementById('form-error').classList.remove('visible');
+    }
+
+    function resetForNewResponse() {
+      document.getElementById('confirmation-box').classList.remove('visible');
+      document.getElementById('attendance-form').style.display = 'block';
+    }
+
+    function escapeHtml(str) {
+      return String(str ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const errBox = document.getElementById('form-error');
+      errBox.classList.remove('visible');
+
+      const nombre = document.getElementById('input-nombre').value.trim();
+      const radio = document.querySelector('input[name="asistencia"]:checked');
+      const asistencia = radio ? radio.value : '';
+      const departamento = document.getElementById('input-departamento').value.trim();
+      const departamento_otro = document.getElementById('input-departamento-otro').value.trim();
+      const ciclo = document.getElementById('input-ciclo').value.trim();
+
+      let modulo_material = document.getElementById('input-modulo').value.trim();
+      if (isOtherModuleSelected) {
+        modulo_material = document.getElementById('input-modulo-otro').value.trim();
+      }
+
+      const tipo_material = document.getElementById('input-tipo-material').value.trim();
+      const observaciones = document.getElementById('input-observaciones').value.trim();
+
+      if (!nombre) {
+        errBox.textContent = 'Por favor, indica tu nombre y apellidos.';
+        errBox.classList.add('visible');
+        document.getElementById('input-nombre').focus();
+        return;
+      }
+
+      if (!asistencia) {
+        errBox.textContent = 'Por favor, selecciona si confirmas tu asistencia al taller.';
+        errBox.classList.add('visible');
+        return;
+      }
+
+      if (asistencia === 'Sí, asistiré') {
+        if (!departamento) {
+          errBox.textContent = 'Por favor, selecciona tu Departamento / Especialidad.';
+          errBox.classList.add('visible');
+          document.getElementById('input-departamento').focus();
+          return;
+        }
+        if (departamento === 'Otros' && !departamento_otro) {
+          errBox.textContent = 'Por favor, escribe tu departamento o especialidad en el campo «Otros».';
+          errBox.classList.add('visible');
+          document.getElementById('input-departamento-otro').focus();
+          return;
+        }
+        if (!ciclo) {
+          errBox.textContent = 'Por favor, selecciona tu Ciclo formativo (o elige «Otros»).';
+          errBox.classList.add('visible');
+          document.getElementById('input-ciclo').focus();
+          return;
+        }
+      }
+
+      const submitBtn = document.getElementById('submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Guardando confirmación...</span>';
+
+      try {
+        const res = await fetch('./api.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nombre,
+            asistencia,
+            departamento: asistencia === 'Sí, asistiré' ? departamento : '',
+            departamento_otro: (asistencia === 'Sí, asistiré' && departamento === 'Otros') ? departamento_otro : '',
+            ciclo: asistencia === 'Sí, asistiré' ? ciclo : '',
+            modulo_material: asistencia === 'Sí, asistiré' ? modulo_material : '',
+            tipo_material: asistencia === 'Sí, asistiré' ? tipo_material : '',
+            observaciones
+          })
+        });
+        const data = await res.json();
+
+        if (!res.ok || !data.ok) {
+          throw new Error(data.error || 'No se pudo registrar la respuesta.');
+        }
+
+        document.getElementById('attendance-form').style.display = 'none';
+        const confirmBox = document.getElementById('confirmation-box');
+        document.getElementById('confirm-text').textContent = data.confirmationMessage;
+        confirmBox.classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        loadPublicStats();
+      } catch (err) {
+        errBox.textContent = err.message || 'Error de conexión al enviar el formulario.';
+        errBox.classList.add('visible');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Enviar confirmación</span><span>→</span>';
+      }
+    }
+
+    function renderBars(containerId, obj, totalAttending) {
+      const el = document.getElementById(containerId);
+      const entries = Object.entries(obj || {});
+      if (entries.length === 0) {
+        el.innerHTML = '<span class="empty-stat">Aún sin datos registrados en esta categoría.</span>';
+        return;
+      }
+      const denom = Math.max(totalAttending || 1, 1);
+      el.innerHTML = entries.map(([label, count]) => {
+        const pct = Math.min(100, Math.round((count / denom) * 100));
+        return `
+          <div class="bar-row">
+            <div class="bar-top">
+              <span>${escapeHtml(label)}</span>
+              <span class="bar-count">${count} ${count === 1 ? 'docente' : 'docentes'}</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: ${pct}%;"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function loadPublicStats() {
+      try {
+        const res = await fetch('./api.php?t=' + Date.now());
+        const data = await res.json();
+        if (!data.ok || !data.stats) return;
+
+        const st = data.stats;
+        const deptsCount = Object.keys(st.byDepartment || {}).length;
+
+        document.getElementById('top-attending-count').textContent = st.attending || 0;
+        document.getElementById('stat-yes').textContent = st.attending || 0;
+        document.getElementById('stat-depts').textContent = deptsCount;
+        document.getElementById('stat-total').textContent = st.total || 0;
+
+        renderBars('dept-bars', st.byDepartment, st.attending);
+        renderBars('module-bars', st.byModule, st.attending);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    loadPublicStats();
+  </script>
+</body>
+</html>
