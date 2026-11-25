@@ -13,15 +13,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Copiar dist/ a Hostinger por SSH (rsync)
-        if: ${{ env.HOSTINGER_SSH_KEY != '' }}
         env:
           HOSTINGER_SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
           HOSTINGER_HOST: ${{ secrets.HOSTINGER_HOST || '109.106.243.32' }}
           HOSTINGER_PORT: ${{ secrets.HOSTINGER_PORT || '65002' }}
           HOSTINGER_USER: ${{ secrets.HOSTINGER_USER || 'u220313307' }}
         run: |
+          if [ -z "$HOSTINGER_SSH_KEY" ]; then
+            echo "HOSTINGER_SSH_KEY no está configurado; omitiendo despliegue."
+            exit 0
+          fi
           mkdir -p ~/.ssh
-          echo "$HOSTINGER_SSH_KEY" > ~/.ssh/id_deploy
+          printf '%s\n' "$HOSTINGER_SSH_KEY" > ~/.ssh/id_deploy
           chmod 600 ~/.ssh/id_deploy
           ssh-keyscan -p "$HOSTINGER_PORT" "$HOSTINGER_HOST" >> ~/.ssh/known_hosts 2>/dev/null
           rsync -avz --delete \
